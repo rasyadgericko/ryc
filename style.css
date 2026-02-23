@@ -738,6 +738,7 @@ section { padding: 8rem 4vw; position: relative; }
   font-size: 0.82rem;
   color: var(--fg-muted);
   line-height: 1.6;
+  margin-bottom: 0;
 }
 
 /* ===== CASE STUDY CARDS ===== */
