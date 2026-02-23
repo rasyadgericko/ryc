@@ -27,6 +27,7 @@ const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 
 if (!isTouchDevice && window.innerWidth > 768) {
   let cx = 0, cy = 0, tx = 0, ty = 0;
   let isOnGrid = false;
+  let lastCX = -1, lastCY = -1;
   document.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
 
   (function animateCursor() {
@@ -37,8 +38,13 @@ if (!isTouchDevice && window.innerWidth > 768) {
       cx += (tx - cx) * 0.12;
       cy += (ty - cy) * 0.12;
     }
-    cursor.style.left = cx + 'px';
-    cursor.style.top = cy + 'px';
+    // Only write to DOM when position has meaningfully changed — avoids redundant style recalcs
+    const rx = cx | 0, ry = cy | 0;
+    if (rx !== lastCX || ry !== lastCY) {
+      cursor.style.left = rx + 'px';
+      cursor.style.top = ry + 'px';
+      lastCX = rx; lastCY = ry;
+    }
     requestAnimationFrame(animateCursor);
   })();
 
@@ -179,6 +185,11 @@ if (logosStrip) {
   let targetMouseX = -9999, targetMouseY = -9999;
   let animId = null;
   let t = 0;
+  // Cache rect — updated on resize, avoids forced reflow on every mousemove
+  let heroRect = { left: 0, top: 0 };
+  // Cache color string — avoids DOM read every animation frame
+  let cachedWaveColor = getColor();
+  themeToggles.forEach(btn => btn.addEventListener('click', () => { cachedWaveColor = getColor(); }));
 
   function resize() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -189,12 +200,12 @@ if (logosStrip) {
     canvas.style.width = width + 'px';
     canvas.style.height = height + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    heroRect = hero.getBoundingClientRect();
   }
 
   hero.addEventListener('mousemove', e => {
-    const rect = hero.getBoundingClientRect();
-    targetMouseX = e.clientX - rect.left;
-    targetMouseY = e.clientY - rect.top;
+    targetMouseX = e.clientX - heroRect.left;
+    targetMouseY = e.clientY - heroRect.top;
   });
   hero.addEventListener('mouseleave', () => {
     targetMouseX = -9999;
@@ -218,8 +229,8 @@ if (logosStrip) {
       mouseY = -9999;
     }
 
-    const color = getColor();
-    const NUM_WAVES = 10;
+    const color = cachedWaveColor;
+    const NUM_WAVES = 8;
 
     for (let i = 0; i < NUM_WAVES; i++) {
       const progress = i / (NUM_WAVES - 1);
@@ -232,7 +243,7 @@ if (logosStrip) {
 
       ctx.beginPath();
       let first = true;
-      for (let x = 0; x <= width; x += 4) {
+      for (let x = 0; x <= width; x += 6) {
         const baseWave = baseY + Math.sin(x * freq + phase) * amp;
         let dy = 0;
         if (mouseX > -1000) {
@@ -524,244 +535,277 @@ contactForm.addEventListener('submit', e => {
 // ===== CTA GLOBE (D3 Dotted Wireframe) =====
 (function initGlobe() {
   const canvas = document.getElementById('ctaGlobe');
-  if (!canvas || typeof d3 === 'undefined') return;
+  if (!canvas) return;
 
-  const wrap = canvas.closest('.cta-globe');
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  const size = wrap ? Math.min(wrap.offsetWidth, 520) : 520;
-  const baseRadius = size * 0.44;
-
-  canvas.width = size * dpr;
-  canvas.height = size * dpr;
-  canvas.style.width = size + 'px';
-  canvas.style.height = size + 'px';
-
-  const ctx = canvas.getContext('2d');
-  ctx.scale(dpr, dpr);
-
-  const cx = size / 2;
-  const cy = size / 2;
-
-  const projection = d3.geoOrthographic()
-    .scale(baseRadius)
-    .translate([cx, cy])
-    .clipAngle(90);
-
-  const pathGen = d3.geoPath().projection(projection).context(ctx);
-  const graticule = d3.geoGraticule()();
-
-  const rotation = [0, -20];
-  let autoRotate = true;
-  let animId = null;
-  let landFeatures = null;
-  const allDots = [];
-
-  function getColors() {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    return {
-      outline:    isDark ? 'rgba(255,255,255,0.65)' : 'rgba(0,0,0,0.55)',
-      graticule:  isDark ? 'rgba(255,255,255,0.1)'  : 'rgba(0,0,0,0.08)',
-      landFill:   isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.04)',
-      landStroke: isDark ? 'rgba(255,255,255,0.45)' : 'rgba(0,0,0,0.35)',
-      dots:       isDark ? 'rgba(180,180,180,0.8)'  : 'rgba(60,60,60,0.65)',
-    };
-  }
-
-  // --- Point-in-polygon helpers (ported from React component) ---
-  function pointInRing(point, ring) {
-    let inside = false;
-    const [px, py] = point;
-    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-      const [xi, yi] = ring[i], [xj, yj] = ring[j];
-      if ((yi > py) !== (yj > py) && px < ((xj - xi) * (py - yi)) / (yj - yi) + xi) {
-        inside = !inside;
+  // Lazy-load D3 only when globe scrolls into view — avoids blocking ~550 KB parse on startup
+  let booted = false;
+  const triggerObs = new IntersectionObserver(entries => {
+    if (!booted && entries[0].isIntersecting) {
+      booted = true;
+      triggerObs.disconnect();
+      if (typeof d3 !== 'undefined') {
+        boot();
+      } else {
+        const s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js';
+        s.onload = boot;
+        document.head.appendChild(s);
       }
     }
-    return inside;
-  }
+  }, { threshold: 0.05 });
+  triggerObs.observe(canvas);
 
-  function pointInFeature(pt, feature) {
-    const geo = feature.geometry;
-    if (geo.type === 'Polygon') {
-      if (!pointInRing(pt, geo.coordinates[0])) return false;
-      for (let i = 1; i < geo.coordinates.length; i++) {
-        if (pointInRing(pt, geo.coordinates[i])) return false;
-      }
-      return true;
+  function boot() {
+    const wrap = canvas.closest('.cta-globe');
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const size = wrap ? Math.min(wrap.offsetWidth, 520) : 520;
+    const baseRadius = size * 0.44;
+
+    canvas.width = size * dpr;
+    canvas.height = size * dpr;
+    canvas.style.width = size + 'px';
+    canvas.style.height = size + 'px';
+
+    const ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+
+    const cx = size / 2;
+    const cy = size / 2;
+
+    const projection = d3.geoOrthographic()
+      .scale(baseRadius)
+      .translate([cx, cy])
+      .clipAngle(90);
+
+    const pathGen = d3.geoPath().projection(projection).context(ctx);
+    const graticule = d3.geoGraticule()();
+
+    const rotation = [0, -20];
+    let autoRotate = true;
+    let animId = null;
+    let landFeatures = null;
+    const allDots = []; // each entry is a pre-allocated [lng, lat] array
+
+    // Cache colors per theme — recomputed only when theme toggles
+    let cachedColors = null;
+    function getColors() {
+      return cachedColors || (cachedColors = computeColors());
     }
-    if (geo.type === 'MultiPolygon') {
-      for (const poly of geo.coordinates) {
-        if (pointInRing(pt, poly[0])) {
-          let inHole = false;
-          for (let i = 1; i < poly.length; i++) {
-            if (pointInRing(pt, poly[i])) { inHole = true; break; }
-          }
-          if (!inHole) return true;
+    function computeColors() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      return {
+        outline:    isDark ? 'rgba(255,255,255,0.65)' : 'rgba(0,0,0,0.55)',
+        graticule:  isDark ? 'rgba(255,255,255,0.1)'  : 'rgba(0,0,0,0.08)',
+        landFill:   isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.04)',
+        landStroke: isDark ? 'rgba(255,255,255,0.45)' : 'rgba(0,0,0,0.35)',
+        dots:       isDark ? 'rgba(180,180,180,0.8)'  : 'rgba(60,60,60,0.65)',
+      };
+    }
+    themeToggles.forEach(btn => btn.addEventListener('click', () => { cachedColors = null; }));
+
+    // --- Point-in-polygon helpers ---
+    function pointInRing(point, ring) {
+      let inside = false;
+      const [px, py] = point;
+      for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+        const [xi, yi] = ring[i], [xj, yj] = ring[j];
+        if ((yi > py) !== (yj > py) && px < ((xj - xi) * (py - yi)) / (yj - yi) + xi) {
+          inside = !inside;
         }
       }
+      return inside;
     }
-    return false;
-  }
 
-  function generateDots(feature) {
-    const dots = [];
-    const [[minLng, minLat], [maxLng, maxLat]] = d3.geoBounds(feature);
-    const step = 16 * 0.08; // same as React component
-    for (let lng = minLng; lng <= maxLng; lng += step) {
-      for (let lat = minLat; lat <= maxLat; lat += step) {
-        if (pointInFeature([lng, lat], feature)) dots.push({ lng, lat });
+    function pointInFeature(pt, feature) {
+      const geo = feature.geometry;
+      if (geo.type === 'Polygon') {
+        if (!pointInRing(pt, geo.coordinates[0])) return false;
+        for (let i = 1; i < geo.coordinates.length; i++) {
+          if (pointInRing(pt, geo.coordinates[i])) return false;
+        }
+        return true;
       }
+      if (geo.type === 'MultiPolygon') {
+        for (const poly of geo.coordinates) {
+          if (pointInRing(pt, poly[0])) {
+            let inHole = false;
+            for (let i = 1; i < poly.length; i++) {
+              if (pointInRing(pt, poly[i])) { inHole = true; break; }
+            }
+            if (!inHole) return true;
+          }
+        }
+      }
+      return false;
     }
-    return dots;
-  }
 
-  // --- Render ---
-  function render() {
-    ctx.clearRect(0, 0, size, size);
-    const c = getColors();
-    const sc = projection.scale();
-    const sf = sc / baseRadius;
+    function generateDots(feature) {
+      const dots = [];
+      const [[minLng, minLat], [maxLng, maxLat]] = d3.geoBounds(feature);
+      const step = 16 * 0.08;
+      for (let lng = minLng; lng <= maxLng; lng += step) {
+        for (let lat = minLat; lat <= maxLat; lat += step) {
+          // Store as pre-allocated array to avoid per-frame heap allocations
+          if (pointInFeature([lng, lat], feature)) dots.push([lng, lat]);
+        }
+      }
+      return dots;
+    }
 
-    // Globe outline
-    ctx.beginPath();
-    ctx.arc(cx, cy, sc, 0, Math.PI * 2);
-    ctx.strokeStyle = c.outline;
-    ctx.lineWidth = 1.5 * sf;
-    ctx.stroke();
+    // --- Render ---
+    function render() {
+      ctx.clearRect(0, 0, size, size);
+      const c = getColors();
+      const sc = projection.scale();
+      const sf = sc / baseRadius;
 
-    if (!landFeatures) return;
-
-    // Graticule
-    ctx.beginPath();
-    pathGen(graticule);
-    ctx.strokeStyle = c.graticule;
-    ctx.lineWidth = 0.7 * sf;
-    ctx.stroke();
-
-    // Land fill
-    ctx.beginPath();
-    landFeatures.features.forEach(f => pathGen(f));
-    ctx.fillStyle = c.landFill;
-    ctx.fill();
-
-    // Land outlines
-    ctx.beginPath();
-    landFeatures.features.forEach(f => pathGen(f));
-    ctx.strokeStyle = c.landStroke;
-    ctx.lineWidth = 0.8 * sf;
-    ctx.stroke();
-
-    // Halftone dots — only draw visible ones (front hemisphere)
-    const rot = projection.rotate();
-    const center = [-rot[0], -rot[1]];
-    allDots.forEach(dot => {
-      if (d3.geoDistance([dot.lng, dot.lat], center) > Math.PI / 2) return;
-      const proj = projection([dot.lng, dot.lat]);
-      if (!proj) return;
+      // Globe outline
       ctx.beginPath();
-      ctx.arc(proj[0], proj[1], 1.1 * sf, 0, Math.PI * 2);
-      ctx.fillStyle = c.dots;
+      ctx.arc(cx, cy, sc, 0, Math.PI * 2);
+      ctx.strokeStyle = c.outline;
+      ctx.lineWidth = 1.5 * sf;
+      ctx.stroke();
+
+      if (!landFeatures) return;
+
+      // Graticule
+      ctx.beginPath();
+      pathGen(graticule);
+      ctx.strokeStyle = c.graticule;
+      ctx.lineWidth = 0.7 * sf;
+      ctx.stroke();
+
+      // Land — single path pass for both fill and stroke (avoids double pathGen traversal)
+      ctx.beginPath();
+      landFeatures.features.forEach(f => pathGen(f));
+      ctx.fillStyle = c.landFill;
       ctx.fill();
-    });
-  }
+      ctx.strokeStyle = c.landStroke;
+      ctx.lineWidth = 0.8 * sf;
+      ctx.stroke();
 
-  // --- Interaction: drag to rotate ---
-  let isDragging = false;
-  let dragStart = null;
-  let rotStart = null;
-
-  canvas.addEventListener('mousedown', e => {
-    isDragging = true;
-    autoRotate = false;
-    dragStart = [e.clientX, e.clientY];
-    rotStart = [...rotation];
-    canvas.style.cursor = 'grabbing';
-  });
-  document.addEventListener('mousemove', e => {
-    if (!isDragging) return;
-    const dx = e.clientX - dragStart[0];
-    const dy = e.clientY - dragStart[1];
-    rotation[0] = rotStart[0] + dx * 0.5;
-    rotation[1] = Math.max(-90, Math.min(90, rotStart[1] - dy * 0.5));
-    projection.rotate(rotation);
-    render();
-  });
-  document.addEventListener('mouseup', () => {
-    if (!isDragging) return;
-    isDragging = false;
-    canvas.style.cursor = 'grab';
-    setTimeout(() => { autoRotate = true; }, 200);
-  });
-
-  // --- Interaction: scroll to zoom ---
-  canvas.addEventListener('wheel', e => {
-    e.preventDefault();
-    const factor = e.deltaY > 0 ? 0.9 : 1.1;
-    const newR = Math.max(baseRadius * 0.5, Math.min(baseRadius * 3, projection.scale() * factor));
-    projection.scale(newR);
-    render();
-  }, { passive: false });
-
-  // --- Touch support ---
-  let touchStart = null, touchRotStart = null;
-  canvas.addEventListener('touchstart', e => {
-    if (e.touches.length === 1) {
-      touchStart = [e.touches[0].clientX, e.touches[0].clientY];
-      touchRotStart = [...rotation];
-      autoRotate = false;
-    }
-  }, { passive: true });
-  canvas.addEventListener('touchmove', e => {
-    if (e.touches.length === 1 && touchStart) {
-      const dx = e.touches[0].clientX - touchStart[0];
-      const dy = e.touches[0].clientY - touchStart[1];
-      rotation[0] = touchRotStart[0] + dx * 0.5;
-      rotation[1] = Math.max(-90, Math.min(90, touchRotStart[1] - dy * 0.5));
-      projection.rotate(rotation);
-      render();
-    }
-  }, { passive: true });
-  canvas.addEventListener('touchend', () => {
-    setTimeout(() => { autoRotate = true; }, 500);
-  }, { passive: true });
-
-  // --- Load GeoJSON land data and generate dots ---
-  fetch('https://raw.githubusercontent.com/martynafford/natural-earth-geojson/refs/heads/master/110m/physical/ne_110m_land.json')
-    .then(r => r.json())
-    .then(data => {
-      landFeatures = data;
-      data.features.forEach(feature => {
-        generateDots(feature).forEach(d => allDots.push(d));
+      // Halftone dots — only front hemisphere, using pre-allocated coord arrays
+      const rot = projection.rotate();
+      const center = [-rot[0], -rot[1]];
+      allDots.forEach(coord => {
+        if (d3.geoDistance(coord, center) > Math.PI / 2) return;
+        const proj = projection(coord);
+        if (!proj) return;
+        ctx.beginPath();
+        ctx.arc(proj[0], proj[1], 1.1 * sf, 0, Math.PI * 2);
+        ctx.fillStyle = c.dots;
+        ctx.fill();
       });
-      render();
-    });
+    }
 
-  // --- Animation loop ---
-  function animate() {
-    if (autoRotate && !prefersReducedMotion) {
-      rotation[0] += 0.25;
+    // --- Interaction: drag to rotate ---
+    let isDragging = false;
+    let dragStart = null;
+    let rotStart = null;
+
+    canvas.addEventListener('mousedown', e => {
+      isDragging = true;
+      autoRotate = false;
+      dragStart = [e.clientX, e.clientY];
+      rotStart = [...rotation];
+      canvas.style.cursor = 'grabbing';
+    });
+    document.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      const dx = e.clientX - dragStart[0];
+      const dy = e.clientY - dragStart[1];
+      rotation[0] = rotStart[0] + dx * 0.5;
+      rotation[1] = Math.max(-90, Math.min(90, rotStart[1] - dy * 0.5));
       projection.rotate(rotation);
       render();
-    }
-    animId = requestAnimationFrame(animate);
-  }
-
-  // Only run when visible
-  const globeObs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        if (!animId) animId = requestAnimationFrame(animate);
-      } else {
-        cancelAnimationFrame(animId);
-        animId = null;
-      }
     });
-  }, { threshold: 0.05 });
+    document.addEventListener('mouseup', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      canvas.style.cursor = 'grab';
+      setTimeout(() => { autoRotate = true; }, 200);
+    });
 
-  if (!prefersReducedMotion) {
-    globeObs.observe(canvas);
-  } else {
-    render();
+    // --- Interaction: scroll to zoom ---
+    canvas.addEventListener('wheel', e => {
+      e.preventDefault();
+      const factor = e.deltaY > 0 ? 0.9 : 1.1;
+      const newR = Math.max(baseRadius * 0.5, Math.min(baseRadius * 3, projection.scale() * factor));
+      projection.scale(newR);
+      render();
+    }, { passive: false });
+
+    // --- Touch support ---
+    let touchStart = null, touchRotStart = null;
+    canvas.addEventListener('touchstart', e => {
+      if (e.touches.length === 1) {
+        touchStart = [e.touches[0].clientX, e.touches[0].clientY];
+        touchRotStart = [...rotation];
+        autoRotate = false;
+      }
+    }, { passive: true });
+    canvas.addEventListener('touchmove', e => {
+      if (e.touches.length === 1 && touchStart) {
+        const dx = e.touches[0].clientX - touchStart[0];
+        const dy = e.touches[0].clientY - touchStart[1];
+        rotation[0] = touchRotStart[0] + dx * 0.5;
+        rotation[1] = Math.max(-90, Math.min(90, touchRotStart[1] - dy * 0.5));
+        projection.rotate(rotation);
+        render();
+      }
+    }, { passive: true });
+    canvas.addEventListener('touchend', () => {
+      setTimeout(() => { autoRotate = true; }, 500);
+    }, { passive: true });
+
+    // --- Load GeoJSON — generate dots in idle chunks to avoid long tasks ---
+    fetch('https://raw.githubusercontent.com/martynafford/natural-earth-geojson/refs/heads/master/110m/physical/ne_110m_land.json')
+      .then(r => r.json())
+      .then(data => {
+        landFeatures = data;
+        const features = data.features;
+        if (typeof requestIdleCallback === 'function') {
+          let fi = 0;
+          function processChunk(deadline) {
+            while (fi < features.length && deadline.timeRemaining() > 2) {
+              generateDots(features[fi++]).forEach(d => allDots.push(d));
+            }
+            if (fi < features.length) requestIdleCallback(processChunk);
+            else render();
+          }
+          requestIdleCallback(processChunk);
+        } else {
+          features.forEach(f => generateDots(f).forEach(d => allDots.push(d)));
+          render();
+        }
+      });
+
+    // --- Animation loop ---
+    function animate() {
+      if (autoRotate && !prefersReducedMotion) {
+        rotation[0] += 0.25;
+        projection.rotate(rotation);
+        render();
+      }
+      animId = requestAnimationFrame(animate);
+    }
+
+    // Only animate when visible
+    if (!prefersReducedMotion) {
+      const animObs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            if (!animId) animId = requestAnimationFrame(animate);
+          } else {
+            cancelAnimationFrame(animId);
+            animId = null;
+          }
+        });
+      }, { threshold: 0.05 });
+      animObs.observe(canvas);
+    } else {
+      render();
+    }
   }
 })();
 
