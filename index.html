@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Riventure — AI-Powered Digital Agency</title>
-<meta name="description" content="Riventure is a next-generation digital agency harnessing AI to design, build, and optimize websites, brands, user experiences, SEO performance, and digital products.">
+<title>Riventure — Studio-Quality Websites at Startup Speed</title>
+<meta name="description" content="Riventure is an AI-native digital agency for ambitious startups. We deliver studio-quality websites and digital products in weeks, not months — powered by AI, reviewed by humans.">
 
 <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
 
 <!-- Apple Touch Icon -->
 <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.png">
-<meta name="apple-mobile-web-app-title" content="Riventure — AI-Powered Digital Agency">
+<meta name="apple-mobile-web-app-title" content="Riventure — Studio-Quality at Startup Speed">
 <meta name="apple-mobile-web-app-capable" content="yes">
 
 <!-- Fonts -->
@@ -43,9 +43,9 @@
   <a href="#" class="nav-logo">Riventure</a>
   <div class="nav-right">
     <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#work">Work</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="theme-toggle" id="themeToggle" aria-label="Switch to dark theme">&#9680;</button>
@@ -58,9 +58,9 @@
 
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation">
+  <a href="#work">Work</a>
   <a href="#services">Services</a>
   <a href="#about">About</a>
-  <a href="#work">Work</a>
   <a href="#contact">Contact</a>
 </div>
 
@@ -69,15 +69,18 @@
   <div class="hero-content">
     <div class="hero-eyebrow fade-up">
       <span class="line" aria-hidden="true"></span>
-      AI-Powered Digital Agency
+      Digital Agency for Ambitious Startups
     </div>
     <h1>
-      <div class="reveal-text"><span class="word">We</span> <span class="word">craft</span> <span class="word">digital</span></div>
-      <div class="reveal-text"><span class="word">experiences</span> <span class="word">that</span></div>
-      <div class="reveal-text"><span class="word"><em>perform.</em></span></div>
+      <div class="reveal-text"><span class="word">Studio-quality</span> <span class="word">websites.</span></div>
+      <div class="reveal-text"><span class="word">Startup</span> <span class="word"><em>speed.</em></span></div>
     </h1>
-    <p class="hero-sub fade-up fd2">Riventure blends human creativity with AI precision to build high-performance websites and digital products — faster, smarter, built to scale.</p>
-    <div class="hero-cta-row fade-up fd3">
+    <p class="hero-sub fade-up fd2">Most agencies take months and charge like it. We use AI-native workflows to ship in weeks — with the craft, performance, and attention your brand actually deserves.</p>
+    <div class="hero-avail fade-up fd3" aria-label="Current availability">
+      <span class="avail-dot" aria-hidden="true"></span>
+      <span>2 project slots open — March 2026</span>
+    </div>
+    <div class="hero-cta-row fade-up fd4">
       <a href="#contact" class="mag-btn">
         <span>Start a Project</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -86,19 +89,7 @@
     </div>
   </div>
 
-  <div class="hero-sphere" aria-hidden="true">
-    <div class="sphere-container">
-      <div class="sphere-ring"></div>
-      <div class="sphere-ring"></div>
-      <div class="sphere-ring"></div>
-      <div class="sphere-ring"></div>
-      <div class="sphere-ring"></div>
-      <div class="sphere-dot"></div>
-      <div class="sphere-dot"></div>
-      <div class="sphere-dot"></div>
-      <div class="sphere-center"></div>
-    </div>
-  </div>
+  <canvas id="heroWaves" class="hero-waves" aria-hidden="true"></canvas>
 
   <div class="hero-bottom fade-up fd4">
     <div class="hero-scroll" aria-hidden="true">
@@ -108,54 +99,199 @@
   </div>
 </section>
 
+<!-- Work / Case Studies -->
+<section id="work" aria-labelledby="work-heading">
+  <div class="section-header">
+    <div>
+      <div class="section-num fade-up"><span class="ln" aria-hidden="true"></span> 01</div>
+      <h2 class="section-h2 fade-up fd1" id="work-heading">Selected <em>work</em></h2>
+    </div>
+    <p class="section-sub fade-up fd2">Real outcomes. Real timelines. Every project shipped with AI and signed off by humans.</p>
+  </div>
+  <div class="case-grid" role="list" aria-label="Portfolio projects">
+
+    <article class="case-card fade-up" role="listitem">
+      <div class="case-inner">
+        <div class="case-info">
+          <div class="case-meta">
+            <span class="case-num">01</span>
+            <span class="case-tag-label">SaaS Platform</span>
+          </div>
+          <h3 class="case-title">Nexus Analytics</h3>
+          <p class="case-desc">Series A startup needed an investor-ready analytics dashboard — fast. Delivered a full-stack platform in 4 weeks with a 96 Lighthouse score and 50K concurrent user capacity.</p>
+          <div class="case-metrics">
+            <span>4 weeks</span>
+            <span>96 Lighthouse</span>
+            <span>50K concurrent users</span>
+          </div>
+          <a href="#contact" class="case-link">
+            Start a similar project
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+        <div class="case-visual cv-1" aria-hidden="true">
+          <span class="cv-abbr">NA</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="case-card fade-up fd1" role="listitem">
+      <div class="case-inner">
+        <div class="case-info">
+          <div class="case-meta">
+            <span class="case-num">02</span>
+            <span class="case-tag-label">E-Commerce</span>
+          </div>
+          <h3 class="case-title">Maison Luxe</h3>
+          <p class="case-desc">Luxury DTC brand needed a site that matched their product quality. Launched a bespoke storefront that lifted conversions 40% in month one — zero templates, built from scratch.</p>
+          <div class="case-metrics">
+            <span>3 weeks</span>
+            <span>+40% conversions</span>
+          </div>
+          <a href="#contact" class="case-link">
+            Start a similar project
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+        <div class="case-visual cv-2" aria-hidden="true">
+          <span class="cv-abbr">ML</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="case-card fade-up fd2" role="listitem">
+      <div class="case-inner">
+        <div class="case-info">
+          <div class="case-meta">
+            <span class="case-num">03</span>
+            <span class="case-tag-label">Venture Capital</span>
+          </div>
+          <h3 class="case-title">Vertex Capital</h3>
+          <p class="case-desc">VC firm needed a digital presence as sharp as their thesis. Built a portfolio site with a secure LP portal that their partners actually use — delivered in 2 weeks.</p>
+          <div class="case-metrics">
+            <span>2 weeks</span>
+            <span>98 Lighthouse</span>
+            <span>Secure LP portal</span>
+          </div>
+          <a href="#contact" class="case-link">
+            Start a similar project
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+        <div class="case-visual cv-3" aria-hidden="true">
+          <span class="cv-abbr">VC</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="case-card fade-up fd3" role="listitem">
+      <div class="case-inner">
+        <div class="case-info">
+          <div class="case-meta">
+            <span class="case-num">04</span>
+            <span class="case-tag-label">HealthTech</span>
+          </div>
+          <h3 class="case-title">MedSync Pro</h3>
+          <p class="case-desc">HealthTech startup required HIPAA compliance from day one. Delivered a patient management platform with AI scheduling — on time, fully compliant, zero security audit findings.</p>
+          <div class="case-metrics">
+            <span>5 weeks</span>
+            <span>HIPAA compliant</span>
+            <span>0 audit findings</span>
+          </div>
+          <a href="#contact" class="case-link">
+            Start a similar project
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+        <div class="case-visual cv-4" aria-hidden="true">
+          <span class="cv-abbr">MS</span>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
 <!-- Tools / Tech Stack -->
 <div class="logos-strip" aria-label="Tools and platforms we build with">
-  <p class="logos-heading fade-up">Tools we <em>collaborate</em> with</p>
-  <div class="logos-grid fade-up fd1" role="list">
-
-    <!-- Claude — shaded, cross at bottom-right -->
-    <div class="logo-cell cell-shaded" role="listitem">
-      <img src="assets/icons/claudeai-icon.svg" alt="Claude" class="logo-wordmark">
-      <span class="logo-cross" aria-hidden="true"></span>
+  <p class="logos-heading fade-up">Built with the tools <em>shaping the future</em></p>
+  <div class="logos-marquee" aria-hidden="true">
+    <div class="logos-track">
+      <div class="logos-set">
+        <img src="assets/icons/claudeai-icon.svg" alt="" class="logo-img">
+        <img src="assets/icons/openai-icon.svg" alt="" class="logo-img">
+        <img src="assets/icons/google-icon.svg" alt="" class="logo-img">
+        <img src="assets/icons/cursor-icon.svg" alt="" class="logo-img">
+        <img src="assets/icons/webflow-icon.svg" alt="" class="logo-img logo-sm">
+        <img src="assets/icons/cloudflare-icon.svg" alt="" class="logo-img logo-sm">
+        <img src="assets/icons/vercel-icon.svg" alt="" class="logo-img">
+        <img src="assets/icons/github-icon.svg" alt="" class="logo-img">
+      </div>
+      <div class="logos-set">
+        <img src="assets/icons/claudeai-icon.svg" alt="" class="logo-img">
+        <img src="assets/icons/openai-icon.svg" alt="" class="logo-img">
+        <img src="assets/icons/google-icon.svg" alt="" class="logo-img">
+        <img src="assets/icons/cursor-icon.svg" alt="" class="logo-img">
+        <img src="assets/icons/webflow-icon.svg" alt="" class="logo-img logo-sm">
+        <img src="assets/icons/cloudflare-icon.svg" alt="" class="logo-img logo-sm">
+        <img src="assets/icons/vercel-icon.svg" alt="" class="logo-img">
+        <img src="assets/icons/github-icon.svg" alt="" class="logo-img">
+      </div>
+      <div class="logos-set">
+        <img src="assets/icons/claudeai-icon.svg" alt="" class="logo-img">
+        <img src="assets/icons/openai-icon.svg" alt="" class="logo-img">
+        <img src="assets/icons/google-icon.svg" alt="" class="logo-img">
+        <img src="assets/icons/cursor-icon.svg" alt="" class="logo-img">
+        <img src="assets/icons/webflow-icon.svg" alt="" class="logo-img logo-sm">
+        <img src="assets/icons/cloudflare-icon.svg" alt="" class="logo-img logo-sm">
+        <img src="assets/icons/vercel-icon.svg" alt="" class="logo-img">
+        <img src="assets/icons/github-icon.svg" alt="" class="logo-img">
+      </div>
+      <div class="logos-set">
+        <img src="assets/icons/claudeai-icon.svg" alt="" class="logo-img">
+        <img src="assets/icons/openai-icon.svg" alt="" class="logo-img">
+        <img src="assets/icons/google-icon.svg" alt="" class="logo-img">
+        <img src="assets/icons/cursor-icon.svg" alt="" class="logo-img">
+        <img src="assets/icons/webflow-icon.svg" alt="" class="logo-img logo-sm">
+        <img src="assets/icons/cloudflare-icon.svg" alt="" class="logo-img logo-sm">
+        <img src="assets/icons/vercel-icon.svg" alt="" class="logo-img">
+        <img src="assets/icons/github-icon.svg" alt="" class="logo-img">
+      </div>
     </div>
+  </div>
+</div>
 
-    <!-- OpenAI — cross at bottom-right -->
-    <div class="logo-cell" role="listitem">
-      <img src="assets/icons/openai-icon.svg" alt="OpenAI" class="logo-wordmark">
-      <span class="logo-cross" aria-hidden="true"></span>
+<!-- Stats Strip -->
+<div class="stats-strip" role="list" aria-label="Key metrics">
+  <div class="stats-inner">
+    <div class="stat-block fade-up" role="listitem">
+      <div class="stat-row">
+        <span class="stat-number" data-target="12">0</span>
+        <span class="stat-suffix">+</span>
+      </div>
+      <div class="stat-label">Projects delivered</div>
     </div>
-
-    <!-- Google — shaded, cross at bottom-right -->
-    <div class="logo-cell cell-shaded" role="listitem">
-      <img src="assets/icons/google-icon.svg" alt="Google" class="logo-wordmark">
-      <span class="logo-cross" aria-hidden="true"></span>
+    <div class="stat-block fade-up fd1" role="listitem">
+      <div class="stat-row">
+        <span class="stat-number" data-target="85">0</span>
+        <span class="stat-suffix">+</span>
+      </div>
+      <div class="stat-label">Avg Lighthouse score</div>
     </div>
-
-    <!-- Cursor -->
-    <div class="logo-cell" role="listitem">
-      <img src="assets/icons/cursor-icon.svg" alt="Cursor" class="logo-wordmark">
+    <div class="stat-block fade-up fd2" role="listitem">
+      <div class="stat-row">
+        <span class="stat-number" data-target="2">0</span>
+        <span class="stat-suffix">&nbsp;wks</span>
+      </div>
+      <div class="stat-label">Average delivery time</div>
     </div>
-
-    <!-- Webflow — icon only -->
-    <div class="logo-cell" role="listitem">
-      <img src="assets/icons/webflow-icon.svg" alt="Webflow" class="logo-wordmark logo-icon-only">
+    <div class="stat-block fade-up fd3" role="listitem">
+      <div class="stat-row">
+        <span class="stat-number" data-target="100">0</span>
+        <span class="stat-suffix">%</span>
+      </div>
+      <div class="stat-label">Client satisfaction</div>
     </div>
-
-    <!-- Cloudflare — shaded, icon only -->
-    <div class="logo-cell cell-shaded" role="listitem">
-      <img src="assets/icons/cloudflare-icon.svg" alt="Cloudflare" class="logo-wordmark logo-icon-only">
-    </div>
-
-    <!-- Vercel -->
-    <div class="logo-cell" role="listitem">
-      <img src="assets/icons/vercel-icon.svg" alt="Vercel" class="logo-wordmark">
-    </div>
-
-    <!-- GitHub — shaded -->
-    <div class="logo-cell cell-shaded" role="listitem">
-      <img src="assets/icons/github-icon.svg" alt="GitHub" class="logo-wordmark">
-    </div>
-
   </div>
 </div>
 
@@ -163,46 +299,46 @@
 <section id="services" aria-labelledby="services-heading">
   <div class="section-header">
     <div>
-      <div class="section-num fade-up"><span class="ln" aria-hidden="true"></span> 01</div>
-      <h2 class="section-h2 fade-up fd1" id="services-heading">Digital solutions<br>built with <em>intelligence.</em></h2>
+      <div class="section-num fade-up"><span class="ln" aria-hidden="true"></span> 02</div>
+      <h2 class="section-h2 fade-up fd1" id="services-heading">Everything your startup needs to <em>launch.</em></h2>
     </div>
-    <p class="section-sub fade-up fd2">From concept to deployment, we leverage AI-powered workflows to deliver exceptional digital products.</p>
+    <p class="section-sub fade-up fd2">One team. No hand-offs. From first pixel to production deploy — in weeks.</p>
   </div>
   <div class="services-list" role="list" aria-label="Our services">
     <div class="service-row fade-up" role="listitem" tabindex="0">
       <span class="service-num" aria-hidden="true">01</span>
-      <div><div class="service-name">AI-Powered Web Development</div><span class="service-tag">Core Service</span></div>
-      <div class="service-desc">Custom websites engineered with Claude AI for faster turnarounds, cleaner code, and intelligent user experiences.</div>
+      <div><div class="service-name">Web Development</div><span class="service-tag">Core</span></div>
+      <div class="service-desc">Production-grade websites built with Claude AI and reviewed by humans. Ship in weeks with 85+ Lighthouse scores out of the box.</div>
       <div class="service-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
     </div>
     <div class="service-row fade-up fd1" role="listitem" tabindex="0">
       <span class="service-num" aria-hidden="true">02</span>
       <div><div class="service-name">UI/UX Design</div><span class="service-tag">Design</span></div>
-      <div class="service-desc">Pixel-perfect interfaces grounded in user research and modern design principles. Experiences that convert.</div>
+      <div class="service-desc">Interfaces that make investors say yes and users come back. Conversion-tested design with 3× more iterations than a traditional timeline allows.</div>
       <div class="service-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
     </div>
     <div class="service-row fade-up fd2" role="listitem" tabindex="0">
       <span class="service-num" aria-hidden="true">03</span>
       <div><div class="service-name">Brand Identity</div><span class="service-tag">Branding</span></div>
-      <div class="service-desc">Strategic brand development from logo to full visual identity systems that communicate authority.</div>
+      <div class="service-desc">From name to full visual system — a brand that looks established from day one. Logo, type, color, and guidelines delivered together.</div>
       <div class="service-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
     </div>
     <div class="service-row fade-up fd3" role="listitem" tabindex="0">
       <span class="service-num" aria-hidden="true">04</span>
       <div><div class="service-name">SEO & Performance</div><span class="service-tag">Growth</span></div>
-      <div class="service-desc">Technical SEO, page speed optimization, and Core Web Vitals tuning for top rankings.</div>
+      <div class="service-desc">Technical SEO and Core Web Vitals baked in from the start — not bolted on after launch. Your site ranks because it's built right.</div>
       <div class="service-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
     </div>
     <div class="service-row fade-up fd4" role="listitem" tabindex="0">
       <span class="service-num" aria-hidden="true">05</span>
       <div><div class="service-name">Custom Development</div><span class="service-tag">Engineering</span></div>
-      <div class="service-desc">Bespoke web applications, SaaS platforms, and API integrations with modern tech stacks.</div>
+      <div class="service-desc">SaaS dashboards, internal tools, and API integrations. Clean architecture that your next hire can actually maintain.</div>
       <div class="service-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
     </div>
     <div class="service-row fade-up fd5" role="listitem" tabindex="0">
       <span class="service-num" aria-hidden="true">06</span>
-      <div><div class="service-name">Digital Strategy</div><span class="service-tag">Coming Soon</span></div>
-      <div class="service-desc">Data-driven marketing, analytics, and growth consulting to amplify your online presence.</div>
+      <div><div class="service-name">Growth & Analytics</div><span class="service-tag">Strategy</span></div>
+      <div class="service-desc">Post-launch analytics, conversion tracking, and data-driven iteration. We don't disappear after deploy — we help you grow.</div>
       <div class="service-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
     </div>
   </div>
@@ -216,82 +352,30 @@
       <div class="about-visual-grid" aria-hidden="true"></div>
       <div class="about-badge">
         <div class="about-badge-dot" aria-hidden="true"></div>
-        <span>AI-Powered Workflow</span>
+        <span>AI-Native Studio</span>
       </div>
     </div>
     <div class="about-text">
-      <div class="section-num fade-up"><span class="ln" aria-hidden="true"></span> 02</div>
-      <h3 class="fade-up fd1" id="about-heading">Where bold ideas<br>meet <em>precision.</em></h3>
-      <p class="fade-up fd2">Riventure is a digital agency built for the AI era. We combine advanced AI capabilities with expert design and development to deliver digital products that outperform the competition.</p>
-      <p class="fade-up fd3">Our workflow integrates AI at every stage—from code generation to quality assurance—enabling us to deliver projects up to three times faster while maintaining the highest standards of quality.</p>
+      <div class="section-num fade-up"><span class="ln" aria-hidden="true"></span> 03</div>
+      <h2 class="fade-up fd1" id="about-heading">Built by a founder, for <em>founders.</em></h2>
+      <p class="fade-up fd2">I started Riventure because I watched too many startups burn months and runway on agencies that didn't move at their pace. Founders deserve a team that ships like they do — fast, focused, and without the bloat.</p>
+      <p class="fade-up fd3">Our workflow is AI-native from day one. Claude handles code generation, competitive research, and QA. Humans handle strategy, design decisions, and every final review. The result: studio-quality output at three times the speed, with zero corners cut.</p>
+      <p class="about-founder-byline fade-up fd3">— <span>Rasyad Gericko</span>, Founder</p>
       <div class="process-steps fade-up fd4" role="list" aria-label="Our process">
         <div class="process-step" role="listitem">
           <span class="step-num">01</span>
-          <div class="step-content"><h4>Strategy & Direction</h4><p>Discovery, research, and visual direction that set the foundation for success.</p></div>
+          <div class="step-content"><h3>Strategy & Direction</h3><p>AI-assisted competitive analysis and market research in hours. Human-led brand positioning and visual direction.</p></div>
         </div>
         <div class="process-step" role="listitem">
           <span class="step-num">02</span>
-          <div class="step-content"><h4>Design & Motion</h4><p>Interfaces with clear intent, personality, and purposeful motion.</p></div>
+          <div class="step-content"><h3>Design & Motion</h3><p>Rapid prototyping with AI — 3× more design iterations in the same timeline. Every pixel signed off by a human eye.</p></div>
         </div>
         <div class="process-step" role="listitem">
           <span class="step-num">03</span>
-          <div class="step-content"><h4>Development & Launch</h4><p>Clean code, seamless interactions, and responsive, accessible experiences.</p></div>
+          <div class="step-content"><h3>Development & Launch</h3><p>Claude-powered code generation with human review at every commit. Accessible, performant, and production-ready from day one.</p></div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- Work -->
-<section id="work" aria-labelledby="work-heading">
-  <div class="section-header">
-    <div>
-      <div class="section-num fade-up"><span class="ln" aria-hidden="true"></span> 03</div>
-      <h2 class="section-h2 fade-up fd1" id="work-heading">Selected<br><em>projects</em></h2>
-    </div>
-    <p class="section-sub fade-up fd2">Every project delivered with AI precision and human craftsmanship.</p>
-  </div>
-  <div class="work-grid" role="list" aria-label="Portfolio projects">
-    <article class="work-card fade-up" role="listitem">
-      <div class="work-card-bg wc-1"></div>
-      <div class="work-card-overlay"></div>
-      <div class="work-card-content">
-        <div class="work-card-tag">SaaS Platform</div>
-        <h3>Nexus Analytics</h3>
-        <p>Full-stack analytics dashboard with real-time data visualization and AI-powered insights.</p>
-      </div>
-      <div class="work-card-corner" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-    </article>
-    <article class="work-card fade-up fd1" role="listitem">
-      <div class="work-card-bg wc-2"></div>
-      <div class="work-card-overlay"></div>
-      <div class="work-card-content">
-        <div class="work-card-tag">E-Commerce</div>
-        <h3>Maison Luxe</h3>
-        <p>Premium fashion e-commerce with personalized recommendations and seamless checkout.</p>
-      </div>
-      <div class="work-card-corner" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-    </article>
-    <article class="work-card fade-up fd2" role="listitem">
-      <div class="work-card-bg wc-3"></div>
-      <div class="work-card-overlay"></div>
-      <div class="work-card-content">
-        <div class="work-card-tag">Corporate</div>
-        <h3>Vertex Capital</h3>
-        <p>Institutional-grade corporate website for a venture capital firm with investor portal.</p>
-      </div>
-      <div class="work-card-corner" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-    </article>
-    <article class="work-card fade-up fd3" role="listitem">
-      <div class="work-card-bg wc-4"></div>
-      <div class="work-card-overlay"></div>
-      <div class="work-card-content">
-        <div class="work-card-tag">Healthcare</div>
-        <h3>MedSync Pro</h3>
-        <p>HIPAA-compliant patient management platform with AI scheduling and telehealth.</p>
-      </div>
-      <div class="work-card-corner" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-    </article>
   </div>
 </section>
 
@@ -300,61 +384,133 @@
   <div class="section-header">
     <div>
       <div class="section-num fade-up"><span class="ln" aria-hidden="true"></span> 04</div>
-      <h2 class="section-h2 fade-up fd1" id="testimonials-heading">Trusted by teams that demand <em>the best.</em></h2>
+      <h2 class="section-h2 fade-up fd1" id="testimonials-heading">Founders who shipped <em>with us.</em></h2>
+    </div>
+    <p class="section-sub fade-up fd2">Three projects. Three industries. Each one on time, on budget, and on brief.</p>
+  </div>
+  <div class="test-wrap">
+
+    <!-- Featured testimonial -->
+    <blockquote class="test-featured fade-up">
+      <p class="test-featured-text">"I'd worked with two agencies before who took months and delivered templates. Riventure rebuilt our entire storefront in three weeks — and our conversion rate jumped 40% the first month. Night and day."</p>
+      <footer class="test-featured-author">
+        <div class="test-avatar" aria-hidden="true">SL</div>
+        <div class="test-author-info">
+          <p class="test-author-name">Sarah Laurent</p>
+          <span>Founder, Maison Luxe</span>
+        </div>
+        <div class="test-stars" role="img" aria-label="5 out of 5 stars">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+      </footer>
+    </blockquote>
+
+    <!-- Two supporting testimonials -->
+    <div class="test-sub-grid">
+      <article class="test-sub-card fade-up fd1">
+        <div class="test-sub-top">
+          <div class="test-stars" role="img" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <span class="test-quote-icon" aria-hidden="true">"</span>
+        </div>
+        <p>We gave them four weeks and honestly expected to push the deadline. They delivered in three. The dashboard handles 50K concurrent users and we haven't touched the codebase since — it just works.</p>
+        <div class="test-author">
+          <div class="test-avatar" aria-hidden="true">JK</div>
+          <div class="test-author-info">
+            <p class="test-author-name">James Kim</p>
+            <span>CTO, Nexus Analytics</span>
+          </div>
+        </div>
+      </article>
+      <article class="test-sub-card fade-up fd2">
+        <div class="test-sub-top">
+          <div class="test-stars" role="img" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <span class="test-quote-icon" aria-hidden="true">"</span>
+        </div>
+        <p>HIPAA compliance isn't optional in our space and most devs treat it like an afterthought. Riventure had it baked into the architecture from the first commit. We passed our security audit with zero findings.</p>
+        <div class="test-author">
+          <div class="test-avatar" aria-hidden="true">RT</div>
+          <div class="test-author-info">
+            <p class="test-author-name">Dr. Rachel Torres</p>
+            <span>CEO, MedSync Pro</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" aria-labelledby="faq-heading">
+  <div class="section-header faq-header">
+    <div>
+      <div class="section-num fade-up"><span class="ln" aria-hidden="true"></span> 05</div>
+      <h2 class="section-h2 fade-up fd1" id="faq-heading">Common questions. <em>Straight answers.</em></h2>
+      <p class="section-sub fade-up fd2">Everything you want to know before we talk.</p>
     </div>
   </div>
-  <div class="test-grid" role="list" aria-label="Client testimonials">
-    <article class="test-card fade-up" role="listitem">
-      <div class="test-card-top">
-        <div class="test-stars" role="img" aria-label="5 out of 5 stars">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <span class="test-quote-icon" aria-hidden="true">"</span>
+  <div class="faq-list">
+    <div class="faq-item fade-up">
+      <button class="faq-q" aria-expanded="false">
+        <span>How long does a typical project take?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-a">
+        <p>Most projects ship in 2–4 weeks from kickoff. A focused marketing site or landing page is typically 1–2 weeks. A full SaaS dashboard or e-commerce build runs 3–5. We'll give you a precise, honest timeline on our first call — never a vague estimate.</p>
       </div>
-      <p>Riventure delivered our entire platform in half the time we expected. The AI-powered workflow meant faster iterations and fewer bugs. Seriously impressive.</p>
-      <div class="test-author">
-        <div class="test-avatar" aria-hidden="true">JK</div>
-        <div class="test-author-info"><h3>James Kim</h3><span>CTO, Nexus Analytics</span></div>
+    </div>
+    <div class="faq-item fade-up fd1">
+      <button class="faq-q" aria-expanded="false">
+        <span>What does AI-native actually mean for my project?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-a">
+        <p>It means AI (primarily Claude) handles code generation, competitive research, and QA iterations — cutting the time on repeatable tasks by 3×. Every output still gets a human review before anything touches your project. You get speed without sacrificing craft or correctness.</p>
       </div>
-    </article>
-    <article class="test-card fade-up fd1" role="listitem">
-      <div class="test-card-top">
-        <div class="test-stars" role="img" aria-label="5 out of 5 stars">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <span class="test-quote-icon" aria-hidden="true">"</span>
+    </div>
+    <div class="faq-item fade-up fd2">
+      <button class="faq-q" aria-expanded="false">
+        <span>Do you only build websites, or can you handle full products?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-a">
+        <p>Both. We build everything from marketing sites and landing pages to full SaaS platforms, internal tools, and e-commerce storefronts. If it lives on the web and needs to be fast, accessible, and well-designed — we can build it.</p>
       </div>
-      <p>The design quality is world-class. Our new site completely transformed how customers perceive our brand. Conversion rate jumped 40% in the first month.</p>
-      <div class="test-author">
-        <div class="test-avatar" aria-hidden="true">SL</div>
-        <div class="test-author-info"><h3>Sarah Laurent</h3><span>Founder, Maison Luxe</span></div>
+    </div>
+    <div class="faq-item fade-up fd3">
+      <button class="faq-q" aria-expanded="false">
+        <span>What happens after the project launches?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-a">
+        <p>We don't disappear after deploy. Most clients stay on a monthly retainer for ongoing iterations, analytics review, and performance optimisation. Every project also includes 30 days of post-launch bug fixes — no extra charge.</p>
       </div>
-    </article>
-    <article class="test-card fade-up fd2" role="listitem">
-      <div class="test-card-top">
-        <div class="test-stars" role="img" aria-label="5 out of 5 stars">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <span class="test-quote-icon" aria-hidden="true">"</span>
+    </div>
+    <div class="faq-item fade-up fd4">
+      <button class="faq-q" aria-expanded="false">
+        <span>How much does a project cost?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-a">
+        <p>Projects start from $3,000 for a focused landing page and scale up based on scope. Because our workflow is AI-native, you get senior-quality output without the senior agency price tag. Fill in the contact form and we'll send a clear scope and estimate within 24 hours.</p>
       </div>
-      <p>Professional, responsive, and incredibly efficient. Riventure understood our compliance requirements from day one and built exactly what we needed.</p>
-      <div class="test-author">
-        <div class="test-avatar" aria-hidden="true">RT</div>
-        <div class="test-author-info"><h3>Dr. Rachel Torres</h3><span>CEO, MedSync Pro</span></div>
-      </div>
-    </article>
+    </div>
   </div>
 </section>
 
@@ -362,22 +518,23 @@
 <div class="cta" role="region" aria-label="Call to action">
   <div class="cta-bg" aria-hidden="true"></div>
   <div class="cta-pills" aria-hidden="true">
-    <span class="cta-pill">AI-Powered</span>
-    <span class="cta-pill">Fast Delivery</span>
-    <span class="cta-pill">Top Quality</span>
-    <span class="cta-pill">Global Reach</span>
+    <span class="cta-pill">3 Weeks Average</span>
+    <span class="cta-pill">95+ Lighthouse</span>
+    <span class="cta-pill">AI-Native</span>
+    <span class="cta-pill">Zero Bloat</span>
   </div>
   <h2>
     <div class="reveal-text"><span class="word">Ready</span> <span class="word">to</span> <span class="word">build</span></div>
     <div class="reveal-text"><span class="word">something</span> <span class="word"><em>bold?</em></span></div>
   </h2>
-  <p class="fade-up">Let's turn your vision into a high-performance digital reality.</p>
+  <p class="fade-up">Your startup deserves a site that ships fast, performs flawlessly, and scales with you.</p>
   <a href="#contact" class="mag-btn fade-up fd1">
-    <span>Get a Free Consultation</span>
+    <span>Let's Talk</span>
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
   </a>
   <div class="cta-globe fade-up fd2" aria-hidden="true">
     <canvas id="ctaGlobe"></canvas>
+    <div class="cta-globe-hint">Drag to rotate &bull; Scroll to zoom</div>
   </div>
 </div>
 
@@ -385,9 +542,9 @@
 <section id="contact" aria-labelledby="contact-heading">
   <div class="contact-split">
     <div class="contact-left">
-      <div class="section-num fade-up"><span class="ln" aria-hidden="true"></span> 05</div>
-      <h2 class="fade-up fd1" id="contact-heading">Let's start your next <em>project.</em></h2>
-      <p class="fade-up fd2">Have an idea? We'd love to hear about it. Reach out and let's discuss how we can bring it to life.</p>
+      <div class="section-num fade-up"><span class="ln" aria-hidden="true"></span> 06</div>
+      <h2 class="fade-up fd1" id="contact-heading">Let's build your next <em>thing.</em></h2>
+      <p class="fade-up fd2">Got a launch date and an ambitious roadmap? Tell us about it. Most projects kick off within a week of first contact.</p>
       <address class="contact-info-list fade-up fd3" style="font-style: normal;">
         <div class="contact-info-item">
           <div class="ci-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
@@ -433,7 +590,7 @@
   <div class="footer-grid">
     <div class="footer-brand">
       <a href="#" class="nav-logo">Riventure</a>
-      <p>AI-powered web agency delivering high-performance digital experiences. Built for the future, available today.</p>
+      <p>Studio-quality websites at startup speed. An AI-native agency built by a founder who got tired of waiting months for agencies to ship.</p>
     </div>
     <div class="footer-cols">
       <div class="footer-col"><h3>Services</h3><a href="#">Web Development</a><a href="#">UI/UX Design</a><a href="#">SEO & Performance</a><a href="#">Brand Identity</a></div>
@@ -452,6 +609,7 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
