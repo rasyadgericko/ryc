@@ -103,112 +103,16 @@
 <section id="work" aria-labelledby="work-heading">
   <div class="section-header">
     <div>
-      <div class="section-num fade-up"><span class="ln" aria-hidden="true"></span> 01</div>
+      <div class="section-num fade-up"><span class="ln" aria-hidden="true"></span> Selected Work</div>
       <h2 class="section-h2 fade-up fd1" id="work-heading">Selected <em>work</em></h2>
     </div>
     <p class="section-sub fade-up fd2">Real outcomes. Real timelines. Every project shipped with AI and signed off by humans.</p>
   </div>
-  <div class="case-grid" role="list" aria-label="Portfolio projects">
-
-    <article class="case-card fade-up" role="listitem">
-      <div class="case-inner">
-        <div class="case-info">
-          <div class="case-meta">
-            <span class="case-num">01</span>
-            <span class="case-tag-label">SaaS Platform</span>
-          </div>
-          <h3 class="case-title">Nexus Analytics</h3>
-          <p class="case-desc">Series A startup needed an investor-ready analytics dashboard — fast. Delivered a full-stack platform in 4 weeks with a 96 Lighthouse score and 50K concurrent user capacity.</p>
-          <div class="case-metrics">
-            <span>4 weeks</span>
-            <span>96 Lighthouse</span>
-            <span>50K concurrent users</span>
-          </div>
-          <a href="#contact" class="case-link">
-            Start a similar project
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-          </a>
-        </div>
-        <div class="case-visual cv-1" aria-hidden="true">
-          <span class="cv-abbr">NA</span>
-        </div>
-      </div>
-    </article>
-
-    <article class="case-card fade-up fd1" role="listitem">
-      <div class="case-inner">
-        <div class="case-info">
-          <div class="case-meta">
-            <span class="case-num">02</span>
-            <span class="case-tag-label">E-Commerce</span>
-          </div>
-          <h3 class="case-title">Maison Luxe</h3>
-          <p class="case-desc">Luxury DTC brand needed a site that matched their product quality. Launched a bespoke storefront that lifted conversions 40% in month one — zero templates, built from scratch.</p>
-          <div class="case-metrics">
-            <span>3 weeks</span>
-            <span>+40% conversions</span>
-          </div>
-          <a href="#contact" class="case-link">
-            Start a similar project
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-          </a>
-        </div>
-        <div class="case-visual cv-2" aria-hidden="true">
-          <span class="cv-abbr">ML</span>
-        </div>
-      </div>
-    </article>
-
-    <article class="case-card fade-up fd2" role="listitem">
-      <div class="case-inner">
-        <div class="case-info">
-          <div class="case-meta">
-            <span class="case-num">03</span>
-            <span class="case-tag-label">Venture Capital</span>
-          </div>
-          <h3 class="case-title">Vertex Capital</h3>
-          <p class="case-desc">VC firm needed a digital presence as sharp as their thesis. Built a portfolio site with a secure LP portal that their partners actually use — delivered in 2 weeks.</p>
-          <div class="case-metrics">
-            <span>2 weeks</span>
-            <span>98 Lighthouse</span>
-            <span>Secure LP portal</span>
-          </div>
-          <a href="#contact" class="case-link">
-            Start a similar project
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-          </a>
-        </div>
-        <div class="case-visual cv-3" aria-hidden="true">
-          <span class="cv-abbr">VC</span>
-        </div>
-      </div>
-    </article>
-
-    <article class="case-card fade-up fd3" role="listitem">
-      <div class="case-inner">
-        <div class="case-info">
-          <div class="case-meta">
-            <span class="case-num">04</span>
-            <span class="case-tag-label">HealthTech</span>
-          </div>
-          <h3 class="case-title">MedSync Pro</h3>
-          <p class="case-desc">HealthTech startup required HIPAA compliance from day one. Delivered a patient management platform with AI scheduling — on time, fully compliant, zero security audit findings.</p>
-          <div class="case-metrics">
-            <span>5 weeks</span>
-            <span>HIPAA compliant</span>
-            <span>0 audit findings</span>
-          </div>
-          <a href="#contact" class="case-link">
-            Start a similar project
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-          </a>
-        </div>
-        <div class="case-visual cv-4" aria-hidden="true">
-          <span class="cv-abbr">MS</span>
-        </div>
-      </div>
-    </article>
-
+  <div class="work-va fade-up" id="workVA">
+    <div class="work-va-list" id="workVAList" role="list" aria-label="Portfolio projects"></div>
+    <div class="work-va-stage" id="workVAStage">
+      <div class="work-va-tilt" id="workVATilt"></div>
+    </div>
   </div>
 </section>
 
@@ -261,87 +165,380 @@
   </div>
 </div>
 
-<!-- Stats Strip -->
-<div class="stats-strip" role="list" aria-label="Key metrics">
-  <div class="stats-inner">
-    <div class="stat-block fade-up" role="listitem">
-      <div class="stat-row">
-        <span class="stat-number" data-target="12">0</span>
-        <span class="stat-suffix">+</span>
-      </div>
-      <div class="stat-label">Projects delivered</div>
-    </div>
-    <div class="stat-block fade-up fd1" role="listitem">
-      <div class="stat-row">
-        <span class="stat-number" data-target="90">0</span>
-        <span class="stat-suffix">+</span>
-      </div>
-      <div class="stat-label">Avg Lighthouse score</div>
-    </div>
-    <div class="stat-block fade-up fd2" role="listitem">
-      <div class="stat-row">
-        <span class="stat-number" data-target="3">0</span>
-        <span class="stat-suffix">&nbsp;wks</span>
-      </div>
-      <div class="stat-label">Average delivery time</div>
-    </div>
-    <div class="stat-block fade-up fd3" role="listitem">
-      <div class="stat-row">
-        <span class="stat-number" data-target="100">0</span>
-        <span class="stat-suffix">%</span>
-      </div>
-      <div class="stat-label">Client satisfaction</div>
-    </div>
-  </div>
-</div>
-
 <!-- Services -->
 <section id="services" aria-labelledby="services-heading">
   <div class="section-header">
     <div>
-      <div class="section-num fade-up"><span class="ln" aria-hidden="true"></span> 02</div>
+      <div class="section-num fade-up"><span class="ln" aria-hidden="true"></span> What We Do</div>
       <h2 class="section-h2 fade-up fd1" id="services-heading">Everything your startup needs to <em>launch.</em></h2>
     </div>
     <p class="section-sub fade-up fd2">One team. No hand-offs. From first pixel to production deploy — in weeks.</p>
   </div>
-  <div class="services-list" role="list" aria-label="Our services">
-    <div class="service-row fade-up" role="listitem" tabindex="0">
-      <span class="service-num" aria-hidden="true">01</span>
-      <div><div class="service-name">Web Development</div><span class="service-tag">Core</span></div>
-      <div class="service-desc">Production-grade websites built with Claude AI and reviewed by humans. Ship in weeks with 85+ Lighthouse scores out of the box.</div>
-      <div class="service-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+  <div class="services-grid" role="list" aria-label="Our services">
+
+    <div class="service-card fade-up" role="listitem" tabindex="0">
+      <div class="service-card-top">
+        <span class="service-tag">Core</span>
+        <span class="service-num" aria-hidden="true">01</span>
+      </div>
+      <div class="service-name">Web Development</div>
+      <p class="service-desc">Production-grade websites built with Claude AI and reviewed by humans. Ship in weeks with 90+ Lighthouse scores out of the box.</p>
+      <div class="service-card-bottom">
+        <div class="service-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+      </div>
     </div>
-    <div class="service-row fade-up fd1" role="listitem" tabindex="0">
-      <span class="service-num" aria-hidden="true">02</span>
-      <div><div class="service-name">UI/UX Design</div><span class="service-tag">Design</span></div>
-      <div class="service-desc">Interfaces that make investors say yes and users come back. Conversion-tested design with 3× more iterations than a traditional timeline allows.</div>
-      <div class="service-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+
+    <div class="service-card fade-up fd1" role="listitem" tabindex="0">
+      <div class="service-card-top">
+        <span class="service-tag">Design</span>
+        <span class="service-num" aria-hidden="true">02</span>
+      </div>
+      <div class="service-name">UI/UX Design</div>
+      <p class="service-desc">Interfaces that make investors say yes and users come back. Conversion-tested design with 3× more iterations than a traditional timeline allows.</p>
+      <div class="service-card-bottom">
+        <div class="service-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+      </div>
     </div>
-    <div class="service-row fade-up fd2" role="listitem" tabindex="0">
-      <span class="service-num" aria-hidden="true">03</span>
-      <div><div class="service-name">Brand Identity</div><span class="service-tag">Branding</span></div>
-      <div class="service-desc">From name to full visual system — a brand that looks established from day one. Logo, type, color, and guidelines delivered together.</div>
-      <div class="service-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+
+    <div class="service-card fade-up fd2" role="listitem" tabindex="0">
+      <div class="service-card-top">
+        <span class="service-tag">Branding</span>
+        <span class="service-num" aria-hidden="true">03</span>
+      </div>
+      <div class="service-name">Brand Identity</div>
+      <p class="service-desc">From name to full visual system — a brand that looks established from day one. Logo, type, color, and guidelines delivered together.</p>
+      <div class="service-card-bottom">
+        <div class="service-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+      </div>
     </div>
-    <div class="service-row fade-up fd3" role="listitem" tabindex="0">
-      <span class="service-num" aria-hidden="true">04</span>
-      <div><div class="service-name">SEO & Performance</div><span class="service-tag">Growth</span></div>
-      <div class="service-desc">Technical SEO and Core Web Vitals baked in from the start — not bolted on after launch. Your site ranks because it's built right.</div>
-      <div class="service-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+
+    <div class="service-card fade-up fd3" role="listitem" tabindex="0">
+      <div class="service-card-top">
+        <span class="service-tag">Growth</span>
+        <span class="service-num" aria-hidden="true">04</span>
+      </div>
+      <div class="service-name">SEO & Performance</div>
+      <p class="service-desc">Technical SEO and Core Web Vitals baked in from the start — not bolted on after launch. Your site ranks because it's built right.</p>
+      <div class="service-card-bottom">
+        <div class="service-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+      </div>
     </div>
-    <div class="service-row fade-up fd4" role="listitem" tabindex="0">
-      <span class="service-num" aria-hidden="true">05</span>
-      <div><div class="service-name">Custom Development</div><span class="service-tag">Engineering</span></div>
-      <div class="service-desc">SaaS dashboards, internal tools, and API integrations. Clean architecture that your next hire can actually maintain.</div>
-      <div class="service-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+
+    <div class="service-card fade-up fd4" role="listitem" tabindex="0">
+      <div class="service-card-top">
+        <span class="service-tag">Engineering</span>
+        <span class="service-num" aria-hidden="true">05</span>
+      </div>
+      <div class="service-name">Custom Development</div>
+      <p class="service-desc">SaaS dashboards, internal tools, and API integrations. Clean architecture that your next hire can actually maintain.</p>
+      <div class="service-card-bottom">
+        <div class="service-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+      </div>
     </div>
-    <div class="service-row fade-up fd5" role="listitem" tabindex="0">
-      <span class="service-num" aria-hidden="true">06</span>
-      <div><div class="service-name">Growth & Analytics</div><span class="service-tag">Strategy</span></div>
-      <div class="service-desc">Post-launch analytics, conversion tracking, and data-driven iteration. We don't disappear after deploy — we help you grow.</div>
-      <div class="service-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+
+    <div class="service-card fade-up fd5" role="listitem" tabindex="0">
+      <div class="service-card-top">
+        <span class="service-tag">Strategy</span>
+        <span class="service-num" aria-hidden="true">06</span>
+      </div>
+      <div class="service-name">Growth & Analytics</div>
+      <p class="service-desc">Post-launch analytics, conversion tracking, and data-driven iteration. We don't disappear after deploy — we help you grow.</p>
+      <div class="service-card-bottom">
+        <div class="service-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+      </div>
     </div>
+
   </div>
+</section>
+
+<!-- How We Work -->
+<section id="process" class="how-we-work" aria-labelledby="process-heading">
+
+  <div class="hwwu-header">
+    <p class="hwwu-eyebrow fade-up">How It Works</p>
+    <h2 class="hwwu-title fade-up fd1" id="process-heading">Simple steps to your <em>next launch.</em></h2>
+    <p class="hwwu-sub fade-up fd2">From first call to live site — a clear, collaborative process powered by AI and guided by humans every step of the way.</p>
+  </div>
+
+  <div class="hwwu-steps" role="list">
+
+    <!-- Step 01 — Initial Consultation -->
+    <div class="hwwu-step fade-up" role="listitem">
+      <div class="hwwu-visual">
+        <div class="hwwu-illus">
+          <svg viewBox="0 0 320 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <line x1="80" y1="0" x2="80" y2="256" stroke="currentColor" stroke-width="0.5" opacity="0.05"/>
+            <line x1="160" y1="0" x2="160" y2="256" stroke="currentColor" stroke-width="0.5" opacity="0.05"/>
+            <line x1="240" y1="0" x2="240" y2="256" stroke="currentColor" stroke-width="0.5" opacity="0.05"/>
+            <line x1="0" y1="64" x2="320" y2="64" stroke="currentColor" stroke-width="0.5" opacity="0.05"/>
+            <line x1="0" y1="128" x2="320" y2="128" stroke="currentColor" stroke-width="0.5" opacity="0.05"/>
+            <line x1="0" y1="192" x2="320" y2="192" stroke="currentColor" stroke-width="0.5" opacity="0.05"/>
+            <circle cx="68" cy="80" r="18" stroke="currentColor" stroke-width="1.5" opacity="0.65"/>
+            <path d="M42 152 Q46 122 68 112 Q90 122 94 152" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.05" stroke-linecap="round" opacity="0.65"/>
+            <circle cx="252" cy="80" r="18" stroke="currentColor" stroke-width="1.5" opacity="0.65"/>
+            <path d="M226 152 Q230 122 252 112 Q274 122 278 152" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.05" stroke-linecap="round" opacity="0.65"/>
+            <path d="M160 24 L166 30 L160 36 L154 30 Z" fill="currentColor" opacity="0.38"/>
+            <rect x="112" y="40" width="96" height="78" rx="12" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.05" opacity="0.85"/>
+            <path d="M148 118 L140 133 L162 118" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity="0.05" stroke-linejoin="round" opacity="0.6"/>
+            <rect x="120" y="48" width="80" height="12" rx="4" fill="currentColor" fill-opacity="0.08"/>
+            <circle cx="126" cy="54" r="2.5" fill="currentColor" opacity="0.3"/>
+            <circle cx="133" cy="54" r="2.5" fill="currentColor" opacity="0.3"/>
+            <circle cx="140" cy="54" r="2.5" fill="currentColor" opacity="0.3"/>
+            <line x1="126" y1="70" x2="164" y2="70" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+            <line x1="126" y1="79" x2="182" y2="79" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.3"/>
+            <line x1="126" y1="88" x2="172" y2="88" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.26"/>
+            <line x1="126" y1="97" x2="178" y2="97" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.22"/>
+            <rect x="165" y="72" width="28" height="20" rx="2" stroke="currentColor" stroke-width="0.75" fill="currentColor" fill-opacity="0.04" opacity="0.35"/>
+            <line x1="169" y1="86" x2="169" y2="81" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+            <line x1="175" y1="86" x2="175" y2="76" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+            <line x1="181" y1="86" x2="181" y2="73" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+            <line x1="187" y1="86" x2="187" y2="79" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+            <path d="M92 104 Q106 90 112 74" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" stroke-linecap="round" opacity="0.2"/>
+            <path d="M228 104 Q214 90 208 74" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" stroke-linecap="round" opacity="0.2"/>
+            <path d="M68 166 Q120 186 160 178 Q200 186 252 166" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" opacity="0.15"/>
+            <circle cx="46" cy="202" r="2" fill="currentColor" opacity="0.14"/>
+            <circle cx="274" cy="202" r="2" fill="currentColor" opacity="0.14"/>
+            <circle cx="160" cy="220" r="2.5" fill="currentColor" opacity="0.18"/>
+          </svg>
+        </div>
+      </div>
+      <div class="hwwu-center">
+        <div class="hwwu-badge" aria-hidden="true">01</div>
+        <div class="hwwu-badge-label">Step</div>
+      </div>
+      <div class="hwwu-content">
+        <span class="hwwu-tag">Discovery</span>
+        <h3 class="hwwu-heading">Initial Consultation</h3>
+        <p class="hwwu-desc">We start with a focused 30-minute call to understand your goals, audience, and timeline. Before we meet, our AI pre-analyses your existing digital presence so we arrive with insight — not just questions.</p>
+        <span class="hwwu-ai">AI pre-analyses your site &amp; competitors</span>
+      </div>
+    </div>
+
+    <!-- Step 02 — Tailored Proposal -->
+    <div class="hwwu-step fade-up fd1" role="listitem">
+      <div class="hwwu-content">
+        <span class="hwwu-tag">Planning</span>
+        <h3 class="hwwu-heading">Tailored Proposal</h3>
+        <p class="hwwu-desc">Within 48 hours you receive a clear, itemised proposal — scope, timeline, and cost. AI handles research and estimation in minutes; humans craft the strategy and ensure every line reflects your brief.</p>
+        <span class="hwwu-ai">AI-powered scope estimation</span>
+      </div>
+      <div class="hwwu-center">
+        <div class="hwwu-badge" aria-hidden="true">02</div>
+        <div class="hwwu-badge-label">Step</div>
+      </div>
+      <div class="hwwu-visual">
+        <div class="hwwu-illus">
+          <svg viewBox="0 0 320 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="90" y="44" width="156" height="196" rx="8" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity="0.02" opacity="0.2" transform="rotate(4 168 142)"/>
+            <rect x="86" y="40" width="156" height="196" rx="8" stroke="currentColor" stroke-width="1.25" fill="currentColor" fill-opacity="0.03" opacity="0.35" transform="rotate(2 164 138)"/>
+            <rect x="82" y="36" width="156" height="196" rx="8" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.05"/>
+            <rect x="82" y="36" width="156" height="28" rx="8" fill="currentColor" fill-opacity="0.09" stroke="none"/>
+            <rect x="82" y="56" width="156" height="8" rx="0" fill="currentColor" fill-opacity="0.09" stroke="none"/>
+            <circle cx="96" cy="50" r="3" fill="currentColor" opacity="0.3"/>
+            <circle cx="105" cy="50" r="3" fill="currentColor" opacity="0.3"/>
+            <circle cx="114" cy="50" r="3" fill="currentColor" opacity="0.3"/>
+            <line x1="126" y1="50" x2="218" y2="50" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+            <line x1="96" y1="80" x2="218" y2="80" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" opacity="0.42"/>
+            <line x1="96" y1="89" x2="200" y2="89" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.28"/>
+            <line x1="96" y1="98" x2="210" y2="98" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.28"/>
+            <line x1="96" y1="112" x2="228" y2="112" stroke="currentColor" stroke-width="0.75" opacity="0.18"/>
+            <line x1="96" y1="124" x2="196" y2="124" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.3"/>
+            <line x1="96" y1="133" x2="210" y2="133" stroke="currentColor" stroke-width="0.85" stroke-linecap="round" opacity="0.24"/>
+            <line x1="96" y1="142" x2="180" y2="142" stroke="currentColor" stroke-width="0.85" stroke-linecap="round" opacity="0.22"/>
+            <line x1="96" y1="156" x2="228" y2="156" stroke="currentColor" stroke-width="0.75" opacity="0.15"/>
+            <line x1="96" y1="168" x2="172" y2="168" stroke="currentColor" stroke-width="0.85" stroke-linecap="round" opacity="0.22"/>
+            <line x1="96" y1="177" x2="162" y2="177" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" opacity="0.17"/>
+            <line x1="96" y1="186" x2="168" y2="186" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" opacity="0.17"/>
+            <line x1="96" y1="195" x2="154" y2="195" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" opacity="0.14"/>
+            <rect x="178" y="158" width="54" height="68" rx="3" stroke="currentColor" stroke-width="0.75" fill="currentColor" fill-opacity="0.04" opacity="0.4"/>
+            <rect x="184" y="196" width="8" height="22" rx="1" fill="currentColor" opacity="0.28"/>
+            <rect x="195" y="183" width="8" height="35" rx="1" fill="currentColor" opacity="0.35"/>
+            <rect x="206" y="174" width="8" height="44" rx="1" fill="currentColor" opacity="0.42"/>
+            <rect x="217" y="188" width="8" height="30" rx="1" fill="currentColor" opacity="0.3"/>
+            <line x1="184" y1="166" x2="225" y2="166" stroke="currentColor" stroke-width="0.75" opacity="0.2"/>
+            <rect x="218" y="24" width="52" height="24" rx="12" stroke="currentColor" stroke-width="1.25" fill="currentColor" fill-opacity="0.08" opacity="0.7"/>
+            <polyline points="228,36 234,42 248,28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.75"/>
+            <path d="M222 36 L238 36 L238 52 Z" fill="currentColor" fill-opacity="0.12" opacity="0.5"/>
+            <line x1="222" y1="36" x2="238" y2="52" stroke="currentColor" stroke-width="0.75" opacity="0.3"/>
+            <circle cx="66" cy="118" r="2.5" stroke="currentColor" stroke-width="1" opacity="0.2"/>
+            <circle cx="66" cy="98" r="1.5" fill="currentColor" opacity="0.12"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 03 — Contract & Kickoff -->
+    <div class="hwwu-step fade-up fd2" role="listitem">
+      <div class="hwwu-visual">
+        <div class="hwwu-illus">
+          <svg viewBox="0 0 320 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="160" cy="128" r="108" stroke="currentColor" stroke-width="0.75" stroke-dasharray="2 10" opacity="0.11"/>
+            <line x1="160" y1="28" x2="160" y2="42" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+            <line x1="160" y1="214" x2="160" y2="228" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+            <line x1="250" y1="128" x2="264" y2="128" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+            <line x1="56" y1="128" x2="70" y2="128" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+            <line x1="221" y1="67" x2="230" y2="58" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.28"/>
+            <line x1="99" y1="67" x2="90" y2="58" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.28"/>
+            <line x1="221" y1="189" x2="230" y2="198" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.28"/>
+            <line x1="99" y1="189" x2="90" y2="198" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.28"/>
+            <circle cx="160" cy="128" r="86" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.04" opacity="0.85"/>
+            <circle cx="160" cy="128" r="70" stroke="currentColor" stroke-width="0.5" opacity="0.12"/>
+            <circle cx="160" cy="42" r="3" fill="currentColor" opacity="0.35"/>
+            <circle cx="160" cy="214" r="3" fill="currentColor" opacity="0.35"/>
+            <circle cx="74" cy="128" r="3" fill="currentColor" opacity="0.35"/>
+            <circle cx="246" cy="128" r="3" fill="currentColor" opacity="0.35"/>
+            <path d="M96 138 C108 108 122 144 136 124 C150 104 162 146 176 120 C188 96 202 134 216 118" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.72"/>
+            <line x1="94" y1="150" x2="218" y2="150" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.3"/>
+            <circle cx="96" cy="138" r="3.5" fill="currentColor" opacity="0.5"/>
+            <circle cx="216" cy="118" r="3.5" fill="currentColor" opacity="0.5"/>
+            <circle cx="160" cy="72" r="14" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.1" opacity="0.8"/>
+            <polyline points="153,72 159,78 170,64" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+            <line x1="118" y1="162" x2="202" y2="162" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" opacity="0.18"/>
+            <line x1="126" y1="170" x2="194" y2="170" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" opacity="0.14"/>
+          </svg>
+        </div>
+      </div>
+      <div class="hwwu-center">
+        <div class="hwwu-badge" aria-hidden="true">03</div>
+        <div class="hwwu-badge-label">Step</div>
+      </div>
+      <div class="hwwu-content">
+        <span class="hwwu-tag">Agreement</span>
+        <h3 class="hwwu-heading">Contract &amp; Kickoff</h3>
+        <p class="hwwu-desc">Simple, plain-English agreements signed digitally. Once confirmed, your project is assigned, your shared workspace is live, and your dedicated channel is open. No delays — momentum starts immediately.</p>
+        <span class="hwwu-ai">AI-drafted agreement reviewed by humans</span>
+      </div>
+    </div>
+
+    <!-- Step 04 — Project Execution -->
+    <div class="hwwu-step fade-up fd3" role="listitem">
+      <div class="hwwu-content">
+        <span class="hwwu-tag">Build</span>
+        <h3 class="hwwu-heading">Project Execution</h3>
+        <p class="hwwu-desc">Our AI-native workflow runs at 3× the speed of a traditional agency. Claude generates and tests code; our team designs, reviews, and refines every output. You get weekly check-ins and real-time access to your project board.</p>
+        <span class="hwwu-ai">Claude generates · humans review every commit</span>
+      </div>
+      <div class="hwwu-center">
+        <div class="hwwu-badge" aria-hidden="true">04</div>
+        <div class="hwwu-badge-label">Step</div>
+      </div>
+      <div class="hwwu-visual">
+        <div class="hwwu-illus">
+          <svg viewBox="0 0 320 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <line x1="36" y1="72" x2="284" y2="72" stroke="currentColor" stroke-width="0.75" opacity="0.14"/>
+            <line x1="36" y1="128" x2="284" y2="128" stroke="currentColor" stroke-width="0.75" opacity="0.14"/>
+            <line x1="36" y1="184" x2="284" y2="184" stroke="currentColor" stroke-width="0.75" opacity="0.14"/>
+            <line x1="14" y1="68" x2="28" y2="68" stroke="currentColor" stroke-width="0.75" opacity="0.25"/>
+            <line x1="14" y1="73" x2="24" y2="73" stroke="currentColor" stroke-width="0.75" opacity="0.18"/>
+            <line x1="14" y1="124" x2="28" y2="124" stroke="currentColor" stroke-width="0.75" opacity="0.25"/>
+            <line x1="14" y1="129" x2="22" y2="129" stroke="currentColor" stroke-width="0.75" opacity="0.18"/>
+            <line x1="14" y1="180" x2="28" y2="180" stroke="currentColor" stroke-width="0.75" opacity="0.25"/>
+            <line x1="14" y1="185" x2="20" y2="185" stroke="currentColor" stroke-width="0.75" opacity="0.18"/>
+            <circle cx="72" cy="128" r="6.5" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.18" opacity="0.85"/>
+            <circle cx="136" cy="128" r="6.5" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.18" opacity="0.85"/>
+            <circle cx="200" cy="128" r="6.5" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.18" opacity="0.85"/>
+            <circle cx="264" cy="128" r="6.5" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.18" opacity="0.85"/>
+            <circle cx="104" cy="72" r="6" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.1" opacity="0.75"/>
+            <polyline points="100,72 103,75 109,68" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+            <circle cx="168" cy="72" r="6" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.1" opacity="0.75"/>
+            <polyline points="164,72 167,75 173,68" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+            <circle cx="232" cy="72" r="6" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.1" opacity="0.75"/>
+            <polyline points="228,72 231,75 237,68" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+            <circle cx="88" cy="184" r="5.5" stroke="currentColor" stroke-width="1.25" fill="currentColor" fill-opacity="0.07" opacity="0.6"/>
+            <path d="M85 184 L88 181 L91 184 L88 187 Z" fill="currentColor" opacity="0.4"/>
+            <circle cx="152" cy="184" r="5.5" stroke="currentColor" stroke-width="1.25" fill="currentColor" fill-opacity="0.07" opacity="0.6"/>
+            <path d="M149 184 L152 181 L155 184 L152 187 Z" fill="currentColor" opacity="0.4"/>
+            <circle cx="216" cy="184" r="5.5" stroke="currentColor" stroke-width="1.25" fill="currentColor" fill-opacity="0.07" opacity="0.6"/>
+            <path d="M213 184 L216 181 L219 184 L216 187 Z" fill="currentColor" opacity="0.4"/>
+            <path d="M88 178 C88 154 136 152 136 134" stroke="currentColor" stroke-width="1" opacity="0.35"/>
+            <path d="M152 178 C152 154 200 152 200 134" stroke="currentColor" stroke-width="1" opacity="0.35"/>
+            <path d="M216 178 C216 154 264 152 264 134" stroke="currentColor" stroke-width="1" opacity="0.35"/>
+            <path d="M72 121 C72 98 104 96 104 78" stroke="currentColor" stroke-width="1" opacity="0.35"/>
+            <path d="M136 121 C136 98 168 96 168 78" stroke="currentColor" stroke-width="1" opacity="0.35"/>
+            <path d="M200 121 C200 98 232 96 232 78" stroke="currentColor" stroke-width="1" opacity="0.35"/>
+            <path d="M104 78 C118 90 128 106 136 121" stroke="currentColor" stroke-width="0.75" stroke-dasharray="3 3" opacity="0.22"/>
+            <path d="M168 78 C182 90 192 106 200 121" stroke="currentColor" stroke-width="0.75" stroke-dasharray="3 3" opacity="0.22"/>
+            <rect x="56" y="220" width="208" height="6" rx="3" stroke="currentColor" stroke-width="0.75" fill="currentColor" fill-opacity="0.04" opacity="0.4"/>
+            <rect x="56" y="220" width="156" height="6" rx="3" fill="currentColor" fill-opacity="0.3" opacity="0.7"/>
+            <circle cx="56" cy="223" r="3.5" fill="currentColor" opacity="0.35"/>
+            <circle cx="212" cy="223" r="3.5" fill="currentColor" opacity="0.5"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 05 — Maintenance & Growth -->
+    <div class="hwwu-step fade-up fd4" role="listitem">
+      <div class="hwwu-visual">
+        <div class="hwwu-illus">
+          <svg viewBox="0 0 320 256" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <line x1="72" y1="40" x2="72" y2="216" stroke="currentColor" stroke-width="0.5" opacity="0.06"/>
+            <line x1="136" y1="40" x2="136" y2="216" stroke="currentColor" stroke-width="0.5" opacity="0.06"/>
+            <line x1="200" y1="40" x2="200" y2="216" stroke="currentColor" stroke-width="0.5" opacity="0.06"/>
+            <line x1="264" y1="40" x2="264" y2="216" stroke="currentColor" stroke-width="0.5" opacity="0.06"/>
+            <line x1="40" y1="72" x2="292" y2="72" stroke="currentColor" stroke-width="0.5" opacity="0.06"/>
+            <line x1="40" y1="128" x2="292" y2="128" stroke="currentColor" stroke-width="0.5" opacity="0.06"/>
+            <line x1="40" y1="184" x2="292" y2="184" stroke="currentColor" stroke-width="0.5" opacity="0.06"/>
+            <line x1="56" y1="28" x2="56" y2="208" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" opacity="0.4"/>
+            <line x1="56" y1="208" x2="296" y2="208" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" opacity="0.4"/>
+            <polyline points="51,36 56,28 61,36" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+            <polyline points="288,203 296,208 288,213" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+            <line x1="50" y1="184" x2="62" y2="184" stroke="currentColor" stroke-width="0.75" opacity="0.3"/>
+            <line x1="50" y1="150" x2="62" y2="150" stroke="currentColor" stroke-width="0.75" opacity="0.3"/>
+            <line x1="50" y1="116" x2="62" y2="116" stroke="currentColor" stroke-width="0.75" opacity="0.3"/>
+            <line x1="50" y1="82" x2="62" y2="82" stroke="currentColor" stroke-width="0.75" opacity="0.3"/>
+            <line x1="30" y1="184" x2="44" y2="184" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" opacity="0.2"/>
+            <line x1="30" y1="150" x2="44" y2="150" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" opacity="0.2"/>
+            <line x1="30" y1="116" x2="44" y2="116" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" opacity="0.2"/>
+            <line x1="30" y1="82" x2="44" y2="82" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" opacity="0.2"/>
+            <line x1="112" y1="202" x2="112" y2="214" stroke="currentColor" stroke-width="0.75" opacity="0.3"/>
+            <line x1="168" y1="202" x2="168" y2="214" stroke="currentColor" stroke-width="0.75" opacity="0.3"/>
+            <line x1="232" y1="202" x2="232" y2="214" stroke="currentColor" stroke-width="0.75" opacity="0.3"/>
+            <line x1="102" y1="222" x2="122" y2="222" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" opacity="0.18"/>
+            <line x1="158" y1="222" x2="178" y2="222" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" opacity="0.18"/>
+            <line x1="222" y1="222" x2="242" y2="222" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" opacity="0.18"/>
+            <path d="M68 200 Q88 192 112 178 Q136 162 160 142 Q184 118 212 95 Q236 74 256 58 L256 208 L68 208 Z" fill="currentColor" fill-opacity="0.04"/>
+            <path d="M68 200 Q88 192 112 178 Q136 162 160 142 Q184 118 212 95 Q236 74 256 58" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.8"/>
+            <circle cx="112" cy="178" r="4.5" fill="currentColor" opacity="0.6"/>
+            <circle cx="112" cy="178" r="13" stroke="currentColor" stroke-width="1" stroke-dasharray="3 4" opacity="0.28"/>
+            <path d="M104 167 A16 16 0 0 1 125 168" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.3"/>
+            <polyline points="122,163 125,168 120,170" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.32"/>
+            <circle cx="184" cy="118" r="5" fill="currentColor" opacity="0.65"/>
+            <circle cx="184" cy="118" r="16" stroke="currentColor" stroke-width="1" stroke-dasharray="3 5" opacity="0.32"/>
+            <path d="M174 106 A18 18 0 0 1 200 108" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.35"/>
+            <polyline points="197,103 200,108 195,110" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.38"/>
+            <circle cx="256" cy="58" r="5.5" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.15" opacity="0.85"/>
+            <line x1="256" y1="54" x2="256" y2="38" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.65"/>
+            <polyline points="251,44 256,38 261,44" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.65"/>
+            <rect x="262" y="30" width="46" height="22" rx="4" stroke="currentColor" stroke-width="0.75" fill="currentColor" fill-opacity="0.05" opacity="0.4"/>
+            <path d="M275 41 L278 38 L281 41 L278 44 Z" fill="currentColor" opacity="0.35"/>
+            <line x1="285" y1="38" x2="298" y2="38" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" opacity="0.25"/>
+            <line x1="285" y1="43" x2="300" y2="43" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" opacity="0.2"/>
+          </svg>
+        </div>
+      </div>
+      <div class="hwwu-center">
+        <div class="hwwu-badge" aria-hidden="true">05</div>
+        <div class="hwwu-badge-label">Step</div>
+      </div>
+      <div class="hwwu-content">
+        <span class="hwwu-tag">Ongoing</span>
+        <h3 class="hwwu-heading">Maintenance &amp; Growth</h3>
+        <p class="hwwu-desc">Post-launch isn't goodbye. Every project includes 30 days of bug fixes, and most clients move to a monthly retainer for performance monitoring, analytics reviews, and AI-assisted iteration cycles.</p>
+        <span class="hwwu-ai">AI monitors performance · flags opportunities</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="hwwu-cta fade-up">
+    <p>Ready to start? We'll respond within 24 hours.</p>
+    <a href="#contact" class="mag-btn">
+      <span>Start a Project</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+
 </section>
 
 <!-- About -->
@@ -356,7 +553,7 @@
       </div>
     </div>
     <div class="about-text">
-      <div class="section-num fade-up"><span class="ln" aria-hidden="true"></span> 03</div>
+      <div class="section-num fade-up"><span class="ln" aria-hidden="true"></span> The Studio</div>
       <h2 class="fade-up fd1" id="about-heading">Built by a founder, for <em>founders.</em></h2>
       <p class="fade-up fd2">I started RYC because I watched too many startups burn months and runway on agencies that didn't move at their pace. Founders deserve a team that ships like they do — fast, focused, and without the bloat.</p>
       <p class="fade-up fd3">Our workflow is AI-native from day one. Claude handles code generation, competitive research, and QA. Humans handle strategy, design decisions, and every final review. The result: studio-quality output at three times the speed, with zero corners cut.</p>
@@ -383,7 +580,7 @@
 <section id="testimonials" aria-labelledby="testimonials-heading">
   <div class="section-header">
     <div>
-      <div class="section-num fade-up"><span class="ln" aria-hidden="true"></span> 04</div>
+      <div class="section-num fade-up"><span class="ln" aria-hidden="true"></span> Client Stories</div>
       <h2 class="section-h2 fade-up fd1" id="testimonials-heading">Founders who shipped <em>with us.</em></h2>
     </div>
     <p class="section-sub fade-up fd2">Three projects. Three industries. Each one on time, on budget, and on brief.</p>
@@ -460,7 +657,7 @@
 <section id="faq" aria-labelledby="faq-heading">
   <div class="section-header faq-header">
     <div>
-      <div class="section-num fade-up"><span class="ln" aria-hidden="true"></span> 05</div>
+      <div class="section-num fade-up"><span class="ln" aria-hidden="true"></span> Questions</div>
       <h2 class="section-h2 fade-up fd1" id="faq-heading">Common questions. <em>Straight answers.</em></h2>
       <p class="section-sub fade-up fd2">Everything you want to know before we talk.</p>
     </div>
@@ -519,7 +716,7 @@
   <div class="cta-bg" aria-hidden="true"></div>
   <div class="cta-pills" aria-hidden="true">
     <span class="cta-pill">3 Weeks Average</span>
-    <span class="cta-pill">95+ Lighthouse</span>
+    <span class="cta-pill">90+ Lighthouse</span>
     <span class="cta-pill">AI-Native</span>
     <span class="cta-pill">Zero Bloat</span>
   </div>
@@ -542,13 +739,13 @@
 <section id="contact" aria-labelledby="contact-heading">
   <div class="contact-split">
     <div class="contact-left">
-      <div class="section-num fade-up"><span class="ln" aria-hidden="true"></span> 06</div>
+      <div class="section-num fade-up"><span class="ln" aria-hidden="true"></span> Get in Touch</div>
       <h2 class="fade-up fd1" id="contact-heading">Let's build your next <em>thing.</em></h2>
       <p class="fade-up fd2">Got a launch date and an ambitious roadmap? Tell us about it. Most projects kick off within a week of first contact.</p>
       <address class="contact-info-list fade-up fd3" style="font-style: normal;">
         <div class="contact-info-item">
           <div class="ci-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-          <div class="ci-text"><div class="cl">Email</div><div class="cv">hello@ryc.agency</div></div>
+          <div class="ci-text"><div class="cl">Email</div><div class="cv">hi@rycworks.com</div></div>
         </div>
         <div class="contact-info-item">
           <div class="ci-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
@@ -609,6 +806,7 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
