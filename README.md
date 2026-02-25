@@ -1,6 +1,6 @@
-# Riventure — Studio-Quality Websites at Startup Speed
+# RYC — Studio-Quality Websites at Startup Speed
 
-A high-performance, vanilla HTML/CSS/JS agency landing page for **Riventure** — an AI-native digital agency for ambitious startups. Built without any frameworks or build tools. Every interaction, animation, and visual effect is implemented from scratch.
+A high-performance, vanilla HTML/CSS/JS agency landing page for **RYC** — an AI-native digital agency for ambitious startups. Built without any frameworks or build tools. Every interaction, animation, and visual effect is implemented from scratch.
 
 ---
 
@@ -21,7 +21,7 @@ A high-performance, vanilla HTML/CSS/JS agency landing page for **Riventure** �
 ## File Structure
 
 ```
-Riventure/
+RYC/
 ├── index.html          # Single-page layout — all sections
 ├── style.css           # All styles (~1 200 lines)
 ├── script.js           # All interactivity (~640 lines)
@@ -222,7 +222,7 @@ Dark mode: all logos receive `filter: brightness(0) invert(1)` to render as whit
 
 ```bash
 # Remote
-https://github.com/rasyadgericko/riventure.git
+https://github.com/rasyadgericko/ryc.git
 
 # Branch
 main

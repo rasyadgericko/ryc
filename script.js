@@ -82,7 +82,7 @@ function updateThemeUI(theme) {
 }
 
 // Restore saved theme — default to dark on first visit
-const savedTheme = localStorage.getItem('riventure-theme') || 'dark';
+const savedTheme = localStorage.getItem('ryc-theme') || 'dark';
 htmlEl.setAttribute('data-theme', savedTheme);
 updateThemeUI(savedTheme);
 
@@ -92,7 +92,7 @@ themeToggles.forEach(btn => {
     const newTheme = isLight ? 'dark' : 'light';
     htmlEl.setAttribute('data-theme', newTheme);
     updateThemeUI(newTheme);
-    localStorage.setItem('riventure-theme', newTheme);
+    localStorage.setItem('ryc-theme', newTheme);
   });
 });
 
