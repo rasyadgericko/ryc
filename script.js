@@ -317,6 +317,22 @@ if (!isTouchDevice && !prefersReducedMotion) {
   });
 }
 
+// ===== BUDGET SLIDER =====
+const budgetSlider = document.getElementById('contact-budget');
+const budgetDisplay = document.getElementById('budget-display');
+if (budgetSlider && budgetDisplay) {
+  const formatBudget = v => +v >= 50000 ? '$50,000+' : '$' + Number(v).toLocaleString();
+  const updateSlider = () => {
+    const min = +budgetSlider.min, max = +budgetSlider.max, val = +budgetSlider.value;
+    const t = (val - min) / (max - min);
+    const size = Math.round(14 + t * 14); // 14px → 28px
+    budgetSlider.style.setProperty('--thumb-size', size + 'px');
+    budgetDisplay.textContent = formatBudget(val);
+  };
+  budgetSlider.addEventListener('input', updateSlider);
+  updateSlider();
+}
+
 // ===== CONTACT FORM =====
 const contactForm = document.getElementById('contactForm');
 const submitBtn = document.getElementById('submitBtn');
