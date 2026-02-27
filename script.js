@@ -333,17 +333,38 @@ contactForm.addEventListener('submit', e => {
 
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending...';
+  formStatus.textContent = '';
 
-  setTimeout(() => {
-    submitBtn.textContent = 'Sent \u2713';
-    formStatus.textContent = 'Thank you! We\'ll be in touch within 24 hours.';
-    setTimeout(() => {
-      contactForm.reset();
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = 'Send Message &#8594;';
-      formStatus.textContent = '';
-    }, 3000);
-  }, 1000);
+  fetch('https://formspree.io/f/xreadpyb', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: new FormData(contactForm)
+  })
+  .then(res => {
+    if (res.ok) {
+      submitBtn.textContent = 'Sent \u2713';
+      formStatus.textContent = 'Thank you! We\'ll be in touch within 24 hours.';
+      setTimeout(() => {
+        contactForm.reset();
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Send Message &#8594;';
+        formStatus.textContent = '';
+      }, 3000);
+    } else {
+      return res.json().then(data => {
+        formStatus.textContent = data.errors
+          ? data.errors.map(e => e.message).join(', ')
+          : 'Something went wrong. Please try again.';
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Send Message &#8594;';
+      });
+    }
+  })
+  .catch(() => {
+    formStatus.textContent = 'Network error. Please try again.';
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = 'Send Message &#8594;';
+  });
 });
 
 // ===== ABOUT VISUAL =====
