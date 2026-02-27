@@ -262,7 +262,7 @@ The form at `#contact` uses `fetch` to POST to a Formspree endpoint. To wire it 
 3. In `script.js`, find the `CONTACT FORM` section and replace the `action` URL:
 
 ```js
-const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', { ... });
+const res = await fetch('https://formspree.io/f/xreadpyb', { ... });
 ```
 
 ---
