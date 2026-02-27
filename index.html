@@ -62,9 +62,88 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebSite",
+  "@type": "Organization",
+  "@id": "https://www.rycworks.com/#organization",
   "name": "RYC Works",
-  "url": "https://www.rycworks.com/"
+  "url": "https://www.rycworks.com/",
+  "logo": "https://www.rycworks.com/assets/ryc-opengraph.jpg",
+  "description": "RYC Works is a global AI-powered website development agency helping startups and companies launch faster, operate efficiently, and scale seamlessly.",
+  "areaServed": "Worldwide",
+  "foundingLocation": {
+    "@type": "Place",
+    "name": "Indonesia"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://www.rycworks.com/#service",
+  "name": "AI-Powered Website Development",
+  "serviceType": "Website Development",
+  "provider": {
+    "@id": "https://www.rycworks.com/#organization"
+  },
+  "areaServed": {
+    "@type": "Place",
+    "name": "Worldwide"
+  },
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Startups, SaaS companies, and growing businesses"
+  },
+  "description": "AI-driven website development services designed to help startups and companies build scalable, high-performance digital platforms that accelerate growth."
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does a typical project take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most projects ship in 1-3 weeks from kickoff. A focused marketing site or landing page is typically 1–2 weeks. A full SaaS dashboard or e-commerce build runs 3–4 weeks. We'll give you a precise, honest timeline on our first call — never a vague estimate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does AI-native actually mean for my project?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It means AI (primarily Claude) handles code generation, competitive research, and QA iterations — cutting the time on repeatable tasks by 3×. Every output still gets a human review before anything touches your project. You get speed without sacrificing craft or correctness."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you only build websites, or can you handle full products?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We build everything from marketing sites and landing pages to full SaaS platforms, internal tools, and e-commerce storefronts. If it lives on the web and needs to be fast, accessible, and well-designed — we can build it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens after the project launches?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We don't disappear after deploy. Most clients stay on a monthly retainer for ongoing iterations, analytics review, and performance optimisation. Every project also includes 30 days of post-launch bug fixes at no extra charge."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does a project cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Projects start from $3,000 for a focused landing page and scale up based on scope. Because our workflow is AI-native, you get senior-quality output without the senior agency price tag. Fill in the contact form and we'll send a clear scope and estimate within 24 hours."
+      }
+    }
+  ]
 }
 </script>
 </head>
