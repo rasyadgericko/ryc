@@ -134,115 +134,170 @@ if (logosStrip) {
   logosObs.observe(logosStrip);
 }
 
-// ===== HERO WAVES =====
-(function initHeroWaves() {
-  const canvas = document.getElementById('heroWaves');
-  if (!canvas) return;
+// ===== HERO DOTTED SURFACE (Three.js) =====
+(function initHeroDottedSurface() {
+  const container = document.getElementById('heroWaves');
+  if (!container || typeof THREE === 'undefined') return;
 
-  const hero = canvas.closest('.hero');
-  const ctx = canvas.getContext('2d');
-  let width = 0, height = 0, dpr = 1;
-  let mouseX = -9999, mouseY = -9999;
-  let targetMouseX = -9999, targetMouseY = -9999;
-  let animId = null;
-  let t = 0;
-  // Cache rect — updated on resize, avoids forced reflow on every mousemove
-  let heroRect = { left: 0, top: 0 };
-  // Cache color string — avoids DOM read every animation frame
-  let cachedWaveColor = getColor();
-  themeToggles.forEach(btn => btn.addEventListener('click', () => { cachedWaveColor = getColor(); }));
+  const hero = container.closest('.hero');
+  const SEPARATION = 150;
+  const AMOUNTX = 40;
+  const AMOUNTY = 60;
 
-  function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    width = hero.offsetWidth;
-    height = hero.offsetHeight;
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    canvas.style.width = width + 'px';
-    canvas.style.height = height + 'px';
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    heroRect = hero.getBoundingClientRect();
+  // Scene setup
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.Fog(0xffffff, 2000, 10000);
+
+  const camera = new THREE.PerspectiveCamera(
+    60,
+    hero.offsetWidth / hero.offsetHeight,
+    1,
+    10000
+  );
+  camera.position.set(0, 355, 1220);
+
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setSize(hero.offsetWidth, hero.offsetHeight);
+  renderer.setClearColor(scene.fog.color, 0);
+  container.appendChild(renderer.domElement);
+
+  // Determine dot color from theme
+  function isDark() {
+    return document.documentElement.getAttribute('data-theme') === 'dark';
   }
 
-  hero.addEventListener('mousemove', e => {
-    targetMouseX = e.clientX - heroRect.left;
-    targetMouseY = e.clientY - heroRect.top;
-  });
-  hero.addEventListener('mouseleave', () => {
-    targetMouseX = -9999;
-    targetMouseY = -9999;
-  });
-
-  function getColor() {
-    return document.documentElement.getAttribute('data-theme') === 'dark'
-      ? '255,255,255' : '0,0,0';
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, width, height);
-
-    // Ease mouse toward target
-    if (targetMouseX > -1000) {
-      mouseX += (targetMouseX - mouseX) * 0.08;
-      mouseY += (targetMouseY - mouseY) * 0.08;
-    } else {
-      mouseX = -9999;
-      mouseY = -9999;
+  // Build particle geometry
+  const positions = [];
+  const colors = [];
+  function setColors() {
+    const c = isDark() ? 200 : 0;
+    for (let i = 0; i < AMOUNTX * AMOUNTY; i++) {
+      colors[i * 3] = c;
+      colors[i * 3 + 1] = c;
+      colors[i * 3 + 2] = c;
     }
+  }
 
-    const color = cachedWaveColor;
-    const NUM_WAVES = 8;
+  for (let ix = 0; ix < AMOUNTX; ix++) {
+    for (let iy = 0; iy < AMOUNTY; iy++) {
+      positions.push(
+        ix * SEPARATION - (AMOUNTX * SEPARATION) / 2,
+        0,
+        iy * SEPARATION - (AMOUNTY * SEPARATION) / 2
+      );
+    }
+  }
+  setColors();
 
-    for (let i = 0; i < NUM_WAVES; i++) {
-      const progress = i / (NUM_WAVES - 1);
-      const baseY = height * (0.12 + progress * 0.78);
-      const amp = 20 + (1 - Math.abs(progress - 0.5) * 2) * 18;
-      const freq = 0.0055 + i * 0.0004;
-      const speed = 0.28 + i * 0.055;
-      const phase = t * speed + i * 1.2;
-      const alpha = 0.035 + (1 - Math.abs(progress - 0.5) * 2) * 0.045;
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
 
-      ctx.beginPath();
-      let first = true;
-      for (let x = 0; x <= width; x += 6) {
-        const baseWave = baseY + Math.sin(x * freq + phase) * amp;
-        let dy = 0;
-        if (mouseX > -1000) {
-          const dx = x - mouseX;
-          const distY = baseWave - mouseY;
-          const dist = Math.sqrt(dx * dx + distY * distY);
-          const rippleR = 200;
-          if (dist < rippleR) {
-            const influence = 1 - dist / rippleR;
-            dy = influence * influence * 50 * Math.sin(dist * 0.045 - t * 3.5);
+  const material = new THREE.PointsMaterial({
+    size: 8,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.20,
+    sizeAttenuation: true
+  });
+
+  const points = new THREE.Points(geometry, material);
+  scene.add(points);
+
+  let count = 0;
+  let animId = null;
+
+  // Mouse interaction — raycaster projects screen coords into 3D
+  let mouseNDC = new THREE.Vector2(-9999, -9999);
+  let mouseWorld = new THREE.Vector3();
+  let mouseActive = false;
+  const MOUSE_RADIUS = 600;
+  const MOUSE_STRENGTH = 120;
+  const raycaster = new THREE.Raycaster();
+  const interactionPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
+
+  if (!isTouchDevice) {
+    container.style.pointerEvents = 'auto';
+
+    hero.addEventListener('mousemove', function (e) {
+      const rect = renderer.domElement.getBoundingClientRect();
+      mouseNDC.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      mouseNDC.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+      raycaster.setFromCamera(mouseNDC, camera);
+      raycaster.ray.intersectPlane(interactionPlane, mouseWorld);
+      mouseActive = true;
+    });
+
+    hero.addEventListener('mouseleave', function () {
+      mouseActive = false;
+    });
+  }
+
+  function animate() {
+    animId = requestAnimationFrame(animate);
+
+    const posArr = geometry.attributes.position.array;
+    let idx = 0;
+    for (let ix = 0; ix < AMOUNTX; ix++) {
+      for (let iy = 0; iy < AMOUNTY; iy++) {
+        const i3 = idx * 3;
+        const baseX = ix * SEPARATION - (AMOUNTX * SEPARATION) / 2;
+        const baseZ = iy * SEPARATION - (AMOUNTY * SEPARATION) / 2;
+
+        // Base sine wave
+        let y = Math.sin((ix + count) * 0.3) * 50 +
+                Math.sin((iy + count) * 0.5) * 50;
+
+        // Mouse repulsion — push dots away from cursor on the XZ plane
+        if (mouseActive) {
+          const dx = baseX - mouseWorld.x;
+          const dz = baseZ - mouseWorld.z;
+          const dist = Math.sqrt(dx * dx + dz * dz);
+          if (dist < MOUSE_RADIUS) {
+            const influence = 1 - dist / MOUSE_RADIUS;
+            y += influence * influence * MOUSE_STRENGTH;
           }
         }
-        const y = baseWave + dy;
-        if (first) { ctx.moveTo(x, y); first = false; }
-        else ctx.lineTo(x, y);
+
+        posArr[i3 + 1] = y;
+        idx++;
       }
-
-      ctx.strokeStyle = 'rgba(' + color + ',' + alpha + ')';
-      ctx.lineWidth = 1;
-      ctx.stroke();
     }
+    geometry.attributes.position.needsUpdate = true;
 
-    t += 0.012;
-    animId = requestAnimationFrame(draw);
+    renderer.render(scene, camera);
+    count += 0.1;
+  }
+
+  // Resize handler
+  function handleResize() {
+    const w = hero.offsetWidth;
+    const h = hero.offsetHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
   }
 
   if (typeof ResizeObserver !== 'undefined') {
-    new ResizeObserver(resize).observe(hero);
+    new ResizeObserver(handleResize).observe(hero);
   } else {
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', handleResize);
   }
-  resize();
 
+  // Theme change — update particle colors
+  themeToggles.forEach(btn => btn.addEventListener('click', () => {
+    setColors();
+    geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+    geometry.attributes.color.needsUpdate = true;
+  }));
+
+  // Start animation with IntersectionObserver pause/resume
   if (!prefersReducedMotion) {
     const obs = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          if (!animId) animId = requestAnimationFrame(draw);
+          if (!animId) animId = requestAnimationFrame(animate);
         } else {
           cancelAnimationFrame(animId);
           animId = null;
