@@ -1,0 +1,8 @@
+import{j as a}from"./jsx-runtime-Cf8x2fCZ.js";/* empty css              */import"./index-yBjzXJbu.js";const l=({label:i,name:r,placeholder:m,required:d=!1,value:c,onChange:u})=>{const t=`textarea-${r}`;return a.jsxs("div",{className:"ryc-field",children:[a.jsx("label",{className:"ryc-label",htmlFor:t,children:i}),a.jsx("textarea",{className:"ryc-textarea",id:t,name:r,placeholder:m,required:d,value:c,onChange:u})]})};l.__docgenInfo={description:"",methods:[],displayName:"Textarea",props:{label:{required:!0,tsType:{name:"string"},description:""},name:{required:!0,tsType:{name:"string"},description:""},placeholder:{required:!1,tsType:{name:"string"},description:""},required:{required:!1,tsType:{name:"boolean"},description:"",defaultValue:{value:"false",computed:!1}},value:{required:!1,tsType:{name:"string"},description:""},onChange:{required:!1,tsType:{name:"signature",type:"function",raw:"(e: React.ChangeEvent<HTMLTextAreaElement>) => void",signature:{arguments:[{type:{name:"ReactChangeEvent",raw:"React.ChangeEvent<HTMLTextAreaElement>",elements:[{name:"HTMLTextAreaElement"}]},name:"e"}],return:{name:"void"}}},description:""}}};const x={title:"Components/Textarea",component:l,tags:["autodocs"]},e={args:{label:"Message",name:"message",placeholder:"Tell us about your project goals and timeline...",required:!0}};var s,n,o;e.parameters={...e.parameters,docs:{...(s=e.parameters)==null?void 0:s.docs,source:{originalSource:`{
+  args: {
+    label: 'Message',
+    name: 'message',
+    placeholder: 'Tell us about your project goals and timeline...',
+    required: true
+  }
+}`,...(o=(n=e.parameters)==null?void 0:n.docs)==null?void 0:o.source}}};const f=["Default"];export{e as Default,f as __namedExportsOrder,x as default};

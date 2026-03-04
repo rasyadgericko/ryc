@@ -1,0 +1,238 @@
+import{j as e}from"./jsx-runtime-Cf8x2fCZ.js";import{useMDXComponents as s}from"./index-DI2gBlDf.js";import{M as i}from"./index-hCPRoH73.js";import{H as r,M as o}from"./ModeContext-Bz0wOFel.js";import{M as d}from"./MachineText-B0XH-b6r.js";import"./index-yBjzXJbu.js";import"./index-BlmOqGMO.js";import"./iframe-CPqD-8hl.js";import"./index-BLHw34Di.js";import"./index-DgH-xKnr.js";import"./index-DrFu-skq.js";function n(a){const t={a:"a",code:"code",em:"em",h1:"h1",h2:"h2",h3:"h3",hr:"hr",li:"li",p:"p",strong:"strong",ul:"ul",...s(),...a.components};return e.jsxs(e.Fragment,{children:[e.jsx(i,{title:"Introduction"}),`
+`,e.jsxs(r,{children:[e.jsx(t.h1,{id:"ryc-design-system",children:"RYC Design System"}),e.jsxs(t.p,{children:["The design language behind ",e.jsx(t.a,{href:"https://www.rycworks.com",rel:"nofollow",children:"rycworks.com"})," — extracted, refined, and documented for consistent builds across every project."]}),e.jsx(t.hr,{}),e.jsx(t.h2,{id:"how-to-use-this-guide",children:"How to Use This Guide"}),e.jsx(t.p,{children:"This design system serves two audiences. Toggle between them using the button at the bottom:"}),e.jsx(t.h3,{id:"human-mode",children:"Human Mode"}),e.jsxs(t.p,{children:["Visual previews, design rationale, usage context, and do/don't guidelines. Built for designers, founders, and stakeholders who need to understand ",e.jsx(t.em,{children:"why"})," a decision was made."]}),e.jsx(t.h3,{id:"machine-mode",children:"Machine Mode"}),e.jsx(t.p,{children:"A single structured text document encoding the complete design system. Built for AI tools that need to generate on-brand code and copy."}),e.jsx(t.hr,{}),e.jsx(t.h2,{id:"foundations",children:"Foundations"}),e.jsxs(t.p,{children:[`| Section | What's Inside |
+|---------|---------------|
+| `,e.jsx(t.a,{href:"?path=/docs/foundations-colors--docs",children:"Colors"}),` | Core palette, semantic colors, theme tokens |
+| `,e.jsx(t.a,{href:"?path=/docs/foundations-typography--docs",children:"Typography"}),` | Type scale, font families, line heights |
+| `,e.jsx(t.a,{href:"?path=/docs/foundations-spacing--docs",children:"Spacing"}),` | 4px grid system, spacing scale |
+| `,e.jsx(t.a,{href:"?path=/docs/foundations-shadows--docs",children:"Shadows"})," | Elevation levels, box shadow tokens |"]}),e.jsx(t.h2,{id:"components",children:"Components"}),e.jsxs(t.p,{children:[`| Component | Variants |
+|-----------|----------|
+| `,e.jsx(t.a,{href:"?path=/docs/components-button--docs",children:"Button"}),` | Primary, Outline, Submit |
+| `,e.jsx(t.a,{href:"?path=/docs/components-tag--docs",children:"Tag"}),` | Default, Featured, AI |
+| `,e.jsx(t.a,{href:"?path=/docs/components-input--docs",children:"Input"}),` | Text, Email, with error |
+| `,e.jsx(t.a,{href:"?path=/docs/components-select--docs",children:"Select"}),` | Default, with placeholder |
+| `,e.jsx(t.a,{href:"?path=/docs/components-textarea--docs",children:"Textarea"}),` | Default |
+| `,e.jsx(t.a,{href:"?path=/docs/components-textlink--docs",children:"TextLink"})," | Animated underline |"]}),e.jsx(t.hr,{}),e.jsx(t.h2,{id:"brand-at-a-glance",children:"Brand at a Glance"}),e.jsxs(t.ul,{children:[`
+`,e.jsxs(t.li,{children:[e.jsx(t.strong,{children:"Fonts"}),": Cabinet Grotesk (display) + Inter (body)"]}),`
+`,e.jsxs(t.li,{children:[e.jsx(t.strong,{children:"Theme"}),": Light ",e.jsx(t.code,{children:"#f1f1f1"})," / Dark ",e.jsx(t.code,{children:"#0f0f0f"})," with automatic switching"]}),`
+`,e.jsxs(t.li,{children:[e.jsx(t.strong,{children:"Radius"}),": Pill ",e.jsx(t.code,{children:"100px"})," for buttons and tags, ",e.jsx(t.code,{children:"8px"})," for cards"]}),`
+`,e.jsxs(t.li,{children:[e.jsx(t.strong,{children:"Motion"}),": ",e.jsx(t.code,{children:"cubic-bezier(0.16, 1, 0.3, 1)"})," — smooth, bouncy exit"]}),`
+`,e.jsxs(t.li,{children:[e.jsx(t.strong,{children:"Grid"}),": 4px base unit, section padding ",e.jsx(t.code,{children:"8rem 4vw"})]}),`
+`]})]}),`
+`,e.jsx(o,{children:e.jsx(d,{children:`name: ryc-brand
+description: Apply RYC brand guidelines to any output — HTML/CSS components, copy, layouts, or documents. Use whenever the task requires on-brand visual design or producing content that represents the RYC brand.
+
+---
+
+# RYC Design System
+
+## Overview
+This document encodes RYC's complete brand system: colors, typography, spacing, shadows, radii, component patterns, and motion rules. Apply it whenever producing anything that represents RYC externally or internally.
+
+**Keywords**: RYC brand, on-brand, style guide, brand colors, typography, design tokens, components, layout
+
+---
+
+## 1. Colors
+
+### Core Palette
+| Token | Light | Dark | Use |
+|---|---|---|---|
+| --bg | #f1f1f1 | #0f0f0f | Page background |
+| --fg | #161616 | #f1f1f1 | Primary text, headings, icons |
+| --fg-muted | #555 | #aaa | Secondary text, descriptions |
+| --fg-dim | #777 | #777 | Tertiary text, decorative labels |
+| --border | rgba(22,22,22,0.12) | rgba(241,241,241,0.1) | Card borders, dividers |
+| --bg-sub | #e8e8e8 | #151515 | Alternating rows, hover states |
+| --accent | #161616 | #f1f1f1 | Buttons, active states, focus rings |
+| --accent-glow | rgba(22,22,22,0.06) | rgba(241,241,241,0.04) | Soft shadows, magnetic button aura |
+
+### Extended Palette
+| Token | Light | Dark | Use |
+|---|---|---|---|
+| --bg-elevated | #ffffff | #1a1a1a | Cards, modals, popovers |
+| --bg-overlay | rgba(0,0,0,0.4) | rgba(0,0,0,0.6) | Modal backdrops, image overlays |
+| --accent-hover | #333 | #ddd | Interactive elements on hover |
+| --accent-active | #000 | #fff | Interactive elements on press |
+
+### Semantic Colors (same in both themes)
+| Token | Hex | Use |
+|---|---|---|
+| --success | #22c55e | Confirmation, positive states |
+| --error | #ef4444 | Validation errors, destructive actions |
+| --warning | #f59e0b | Caution states, attention needed |
+| --info | #3b82f6 | Informational states, help text |
+
+### Color Rules
+- NEVER hardcode hex values — always use var(--token-name).
+- --fg and --bg carry the theme. Everything else derives from these.
+- --border uses alpha transparency so it works on any background.
+- Semantic colors are theme-agnostic — same value in both modes.
+
+---
+
+## 2. Typography
+
+### Font Families
+| Role | Stack | Weights |
+|---|---|---|
+| Display | 'Cabinet Grotesk', sans-serif | 700, 900 |
+| Body | 'Inter', -apple-system, BlinkMacSystemFont, sans-serif | 400, 500, 600 |
+| Mono | ui-monospace, 'SF Mono', Menlo, Consolas, monospace | 400 |
+
+### Type Scale
+| Token | Value | Use |
+|---|---|---|
+| --text-4xl | clamp(2.8rem, 8vw, 7rem) | Hero headings — Cabinet Grotesk 900, line-height 0.92, tracking -0.05em |
+| --text-3xl | clamp(1.8rem, 5vw, 4rem) | Section headings — Cabinet Grotesk 900, line-height 1.0, tracking -0.05em |
+| --text-2xl | clamp(1.3rem, 3vw, 1.8rem) | Subsection headings — Cabinet Grotesk 700, line-height 1.1, tracking -0.03em |
+| --text-xl | 1.2rem | Large body — Inter 600, line-height 1.3 |
+| --text-lg | 1.05rem | Lead paragraphs — Inter 400, line-height 1.8 |
+| --text-base | 0.95rem | Body text — Inter 400, line-height 1.8 |
+| --text-sm | 0.82rem | Labels, metadata — Inter 500, line-height 1.5 |
+| --text-xs | 0.7rem | Tags, eyebrows — Inter 600, uppercase, tracking 0.08em |
+
+### Heading CSS
+All headings: font-family: var(--font-display); font-weight: 900; text-transform: uppercase; letter-spacing: -0.05em; line-height: 0.92;
+h1: font-size: clamp(2.8rem, 8vw, 7rem);
+h2: font-size: clamp(1.8rem, 5vw, 4rem);
+h3: font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1;
+h4: font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2;
+h5: font-size: 1rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.3;
+h6: font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; text-transform: none;
+
+### Line Heights
+| Token | Value | Use |
+|---|---|---|
+| --leading-tight | 0.92 | Display headings |
+| --leading-snug | 1.1 | Subheadings |
+| --leading-normal | 1.5 | Default body text |
+| --leading-relaxed | 1.8 | Long-form body text |
+
+### Letter Spacing
+| Token | Value | Use |
+|---|---|---|
+| --tracking-tight | -0.05em | Display headings |
+| --tracking-normal | 0 | Body text |
+| --tracking-wide | 0.08em | Uppercase labels |
+| --tracking-wider | 0.1em | Section eyebrows |
+
+### Typography Rules
+- Headings always use Cabinet Grotesk in uppercase with tight letter-spacing (-0.05em).
+- Body text uses Inter at 0.95rem with relaxed line-height (1.8).
+- Tags and eyebrows use Inter at 0.7rem, semibold, uppercase, with 0.08em tracking.
+- Use <em> within headings for italic emphasis — this is a core brand pattern.
+
+---
+
+## 3. Spacing
+
+4px base grid. Every margin, padding, and gap snaps to this scale.
+
+| Token | Value | Use |
+|---|---|---|
+| --space-0 | 0 | None |
+| --space-1 | 4px | Micro — icon gaps, inline spacing |
+| --space-2 | 8px | Tight — tag padding, compact gaps |
+| --space-3 | 12px | Small — card grid gaps, form gaps |
+| --space-4 | 16px | Base — default component spacing |
+| --space-5 | 20px | Medium — card padding compact |
+| --space-6 | 24px | Comfortable — form field gaps |
+| --space-8 | 32px | Large — section sub-spacing |
+| --space-10 | 40px | Extra large — layout gaps |
+| --space-12 | 48px | Section inner — card padding |
+| --space-16 | 64px | Section — desktop horizontal padding |
+| --space-20 | 80px | Section vertical — large sections |
+| --space-24 | 96px | Section max — hero spacing |
+
+### Layout Patterns
+- Section padding (desktop): --space-20 + 4vw (vertical + horizontal)
+- Section padding (mobile): --space-16 + 6vw
+- Card padding: --space-10 to --space-12
+- Card grid gap: --space-3
+- Form field gap: --space-6
+- Button padding: --space-5 (v) × --space-10 (h)
+- Tag padding: --space-1 (v) × --space-3 (h)
+
+---
+
+## 4. Shadows & Radii
+
+### Shadow Scale
+| Token | Value | Use |
+|---|---|---|
+| --shadow-xs | 0 1px 2px rgba(0,0,0,0.04) | Subtle lift for small elements |
+| --shadow-sm | 0 2px 8px color-mix(in srgb, var(--fg) 5%, transparent) | Default card resting state |
+| --shadow-md | 0 4px 16px color-mix(in srgb, var(--fg) 7%, transparent) | Hovered cards, dropdowns |
+| --shadow-lg | multi-layer (see CSS) | Elevated cards, service card hover |
+| --shadow-xl | 0 28px 80px rgba(0,0,0,0.55) | Browser mockups, hero elements |
+
+### Border Radius
+| Token | Value | Use |
+|---|---|---|
+| --radius-none | 0 | Sharp elements, dividers |
+| --radius-sm | 4px | Input fields, subtle rounding |
+| --radius-md | 8px | Cards, containers |
+| --radius-lg | 12px | Testimonial cards, modals |
+| --radius-pill | 100px | Buttons, tags, badges |
+| --radius-round | 50% | Avatars, circular icons |
+
+### Elevation Rules
+- Cards use --radius-md (8px). Testimonial cards use --radius-lg (12px).
+- Buttons and tags always use --radius-pill (100px).
+- Shadows scale with interaction: resting = --shadow-sm, hover = --shadow-lg.
+
+---
+
+## 5. Motion
+
+- Easing: cubic-bezier(0.16, 1, 0.3, 1) — smooth, bouncy exit
+- Duration fast: 0.15s (micro-interactions, button states)
+- Duration normal: 0.3s (hover transitions, toggles)
+- Duration slow: 0.6s (page transitions, reveals)
+
+---
+
+## 6. Components
+
+### Button
+- Variants: primary (filled --accent), outline (border only), submit (same as primary)
+- Sizes: sm, md, lg
+- Radius: --radius-pill (100px)
+- Padding: --space-5 (v) × --space-10 (h)
+- Hover: background slides in from left, bouncy easing
+- Optional trailing arrow icon
+
+### Tag
+- Variants: default, featured (inverted colors), ai (small dot indicator), pill
+- Font: --text-xs, uppercase, 0.08em tracking
+- Radius: --radius-pill
+- Padding: --space-1 (v) × --space-3 (h)
+
+### Input / Select / Textarea
+- Underline-only design (no full border)
+- Focus: underline animates to --accent color
+- Error: red underline + error message
+- Label above, optional/required flag
+
+### TextLink
+- Animated underline that grows from right to left on hover
+- Used for inline links within paragraphs
+
+### PricingCard
+- Card with tag, delivery time, price, description, feature list
+- Featured variant: dark background, elevated, full-width CTA
+- Hover: lift + shadow transition
+
+### ServiceCard
+- Card with tag, number badge, name, description
+- Hover: lift, shadow, spotlight overlay, name shifts right
+
+### TestimonialCard
+- Featured: large italic text, 5-star rating, centered
+- Sub: smaller text, quoted format, hover effect
+- Avatar initials in circular badge
+
+### FAQItem
+- Expandable accordion
+- Plus-to-X icon rotation on toggle
+- CSS grid animation for smooth height transition`})})]})}function w(a={}){const{wrapper:t}={...s(),...a.components};return t?e.jsx(t,{...a,children:e.jsx(n,{...a})}):n(a)}export{w as default};
