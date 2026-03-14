@@ -134,6 +134,7 @@ input:focus-visible, textarea:focus-visible {
 .fd2 { transition-delay: 0.2s; }
 .fd3 { transition-delay: 0.3s; }
 .fd4 { transition-delay: 0.4s; }
+.fd5 { transition-delay: 0.5s; }
 
 .reveal-text { overflow: hidden; }
 .reveal-text .word {
@@ -151,4 +152,62 @@ input:focus-visible, textarea:focus-visible {
 
 @media (prefers-reduced-motion: reduce) {
   .fade-up, .reveal-text .word { transition: none; transform: none; opacity: 1; }
+}
+
+/* ── Headings ──────────────────────────────── */
+
+h1, h2, h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+  line-height: 0.92;
+}
+
+h1 em, h2 em, h3 em {
+  font-family: 'Permanent Marker', cursive;
+  font-style: normal;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: -0.04em;
+  font-size: 1.1em;
+  display: inline-block;
+  transform: rotate(-2deg);
+  transform-origin: center bottom;
+  position: relative;
+  padding-bottom: 0.25em;
+  clip-path: inset(-10% 100% -10% 0);
+  transition: clip-path 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+}
+
+h1 em::after, h2 em::after, h3 em::after {
+  content: '';
+  position: absolute;
+  left: -0.2em;
+  bottom: 0;
+  width: calc(100% + 0.4em);
+  height: 0.15em;
+  background: var(--fg);
+  border-radius: 0.06em;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12'%3E%3Cpath d='M2 8 C30 3,60 10,100 6 S170 2,198 7' stroke='%23000' stroke-width='10' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12'%3E%3Cpath d='M2 8 C30 3,60 10,100 6 S170 2,198 7' stroke='%23000' stroke-width='10' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.4s;
+}
+
+.visible em, .fade-up.visible em, .reveal-text.visible em {
+  clip-path: inset(-10% -10% -10% 0);
+}
+.visible em::after, .fade-up.visible em::after, .reveal-text.visible em::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  h1 em, h2 em, h3 em { clip-path: none; transition: none; }
+  h1 em::after, h2 em::after, h3 em::after { transform: scaleX(1); transition: none; }
 }

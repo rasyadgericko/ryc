@@ -618,7 +618,6 @@ section.svc-runway {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  cursor: pointer;
   transition:
     transform 0.5s var(--ease),
     box-shadow 0.5s var(--ease),

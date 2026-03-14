@@ -22,8 +22,16 @@
 
   FOR BLOG-POST PAGES (in /blog/):
   - Use ../ prefix on all utility links
-  - The inline <style> block should contain only article-specific prose styles
-  - No @font-face or :root needed — base.css provides both
+  - Load ../utility/bundle.css (includes article.css) — no @font-face or :root needed
+  - Load ../utility/blog-post.js before boot.js for TOC + share logic
+  - No inline <style> or <script> blocks needed — bundle.css + blog-post.js cover everything
+  - If the post has a truly unique style (e.g. a custom table layout), keep a minimal inline <style>
+
+  FOR PAGES USING SUPABASE (index.html, work.html):
+  - Load the Supabase CDN before utility/supabase.js
+  - utility/supabase.js exposes window.RYC.sb, window.RYC.toSlug(), and window.RYC.MOCK
+  - Page JS must use window.RYC.sb — never call window.supabase.createClient() directly
+  - Do NOT add utility/supabase.js to boot.js — it is an opt-in, page-specific load
   ===================================================================== -->
 <html lang="en" data-theme="dark">
 <head>
@@ -56,13 +64,9 @@
 <link rel="preload" href="assets/fonts/SpaceGrotesk-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/PermanentMarker-Regular.woff2" as="font" type="font/woff2" crossorigin>
 
-<!-- Stylesheets — order matters: base.css MUST come before page CSS -->
-<link rel="stylesheet" href="utility/base.css">
-<link rel="stylesheet" href="utility/nav.css">
+<!-- Shared utility styles (base, nav, loader, glow-btn, page-transition) -->
+<link rel="stylesheet" href="utility/bundle.css">
 <link rel="stylesheet" href="PAGE_PATH/PAGE_PATH.css">
-<link rel="stylesheet" href="utility/loader.css">
-<link rel="stylesheet" href="utility/glow-btn.css">
-<link rel="stylesheet" href="utility/page-transition.css">
 
 <script type="application/ld+json">
 {
@@ -116,12 +120,24 @@
 <!-- Footer injection point -->
 <div id="site-footer"></div>
 
-<!-- Scripts — order matters: page JS first, then shared utilities -->
+<!--
+  Scripts — page JS first, then boot.js loads all shared utilities in order.
+
+  boot.js automatically handles (no page JS should duplicate these):
+    - Loader hide/fade
+    - Theme toggle (dark/light, persisted in localStorage)
+    - Nav + footer injection (components.js)
+    - Glow button init (glow-btn.js)
+    - Page transitions (page-transition.js)
+    - Reveal animations (.fade-up, .reveal-text) via IntersectionObserver (reveal.js)
+    - Mobile menu open/close
+
+  If this page uses Supabase, add these TWO lines BEFORE the page JS:
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <script src="utility/supabase.js"></script>
+-->
 <script src="PAGE_PATH/PAGE_PATH.js"></script>
-<script src="utility/loader.js"></script>
-<script src="utility/components.js"></script>  <!-- injects nav + footer + mobile menu -->
-<script src="utility/glow-btn.js"></script>    <!-- initialises all .glow-btn elements (must run after components.js) -->
-<script src="utility/page-transition.js"></script>
+<script src="utility/boot.js"></script>
 
 </body>
 </html>

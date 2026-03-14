@@ -1,0 +1,10 @@
+/* utility/bundle.css — single entry point for all shared styles.
+   Pages only need: <link rel="stylesheet" href="utility/bundle.css">
+   Order matters: base.css (tokens/reset) must come first. */
+
+@import './base.css';
+@import './nav.css';
+@import './loader.css';
+@import './glow-btn.css';
+@import './page-transition.css';
+@import './article.css';

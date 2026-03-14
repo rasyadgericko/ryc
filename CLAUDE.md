@@ -287,7 +287,7 @@ After applying: run `/webapp-testing` to screenshot nav, footer, and buttons on 
 | Initializing a component in both page JS and shared JS | Double-wrapping, broken visual | Remove the duplicate; only shared JS initializes it |
 | Loading a shared CSS file only on the page you're editing | Other pages stay broken | Audit all pages every time |
 | Using a bare tag selector (`nav`, `footer`) in shared CSS | Unrelated elements (TOC `<nav>`, etc.) get wrong styles | Scope to role/class: `nav[role="navigation"]` |
-| Forgetting that blog posts have inline `<style>` not a separate CSS file | nav/footer injected by JS has no styles | Blog posts must load `utility/nav.css` explicitly |
+| Forgetting that blog posts have inline `<style>` not a separate CSS file | nav/footer injected by JS has no styles | Blog posts must load `utility/bundle.css` |
 | Moving a file to `utility/` but only updating one page's HTML path | All other pages 404 on the asset | Use grep to find every reference, update all at once |
 
 ---
@@ -315,7 +315,7 @@ Every new standalone page **must** load the full shared utility stack. Missing a
 
 ### Required `<head>` links (root-level pages)
 
-Stylesheet order matters — `utility/base.css` MUST come before page CSS:
+`utility/bundle.css` is the single entry point for all shared styles (base, nav, loader, glow-btn, page-transition). It must come before page-specific CSS:
 
 ```html
 <!-- Fonts — preload all four -->
@@ -324,23 +324,15 @@ Stylesheet order matters — `utility/base.css` MUST come before page CSS:
 <link rel="preload" href="assets/fonts/SpaceGrotesk-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/PermanentMarker-Regular.woff2" as="font" type="font/woff2" crossorigin>
 
-<!-- Stylesheets — order matters: base.css MUST come before page CSS -->
-<link rel="stylesheet" href="utility/base.css">
-<link rel="stylesheet" href="utility/nav.css">
+<!-- Shared utility styles — must come before page CSS -->
+<link rel="stylesheet" href="utility/bundle.css">
 <link rel="stylesheet" href="yourpage/yourpage.css">
-<link rel="stylesheet" href="utility/loader.css">
-<link rel="stylesheet" href="utility/glow-btn.css">
-<link rel="stylesheet" href="utility/page-transition.css">
 ```
 
 For **blog post pages** (`/blog/*.html`) use `../` prefix:
 
 ```html
-<link rel="stylesheet" href="../utility/base.css">
-<link rel="stylesheet" href="../utility/nav.css">
-<link rel="stylesheet" href="../utility/loader.css">
-<link rel="stylesheet" href="../utility/glow-btn.css">
-<link rel="stylesheet" href="../utility/page-transition.css">
+<link rel="stylesheet" href="../utility/bundle.css">
 ```
 
 ### Page CSS files — what NOT to include
@@ -382,17 +374,42 @@ Page CSS files (e.g. `pricing/pricing.css`) should contain **only page-specific 
 <div id="site-footer"></div>
 ```
 
-### Required scripts (bottom of `<body>`, in this order)
+### Required scripts (bottom of `<body>`)
+
+`utility/boot.js` is the single entry point that loads all shared scripts (loader, theme, components, reveal, glow-btn, page-transition) in the correct order. It automatically handles: theme toggle, reveal animations (`.fade-up`, `.reveal-text`), mobile menu, nav/footer injection, glow buttons, and page transitions — **no page JS should duplicate any of these**:
 
 ```html
 <script src="yourpage/yourpage.js"></script>   <!-- page-specific JS first -->
-<script src="utility/loader.js"></script>
-<script src="utility/components.js"></script>  <!-- injects nav + footer -->
-<script src="utility/glow-btn.js"></script>    <!-- initialises all .glow-btn elements -->
-<script src="utility/page-transition.js"></script>
+<script src="utility/boot.js"></script>        <!-- loads all shared utilities sequentially -->
 ```
 
-**Critical ordering rule:** `utility/glow-btn.js` must run **after** `utility/components.js` (nav CTA is injected by components.js, glow-btn.js must find it). Never initialise glow buttons in page-specific JS — `glow-btn.js` handles all of them globally using a `.gb-init` guard to prevent double-wrapping.
+**Adding a new shared utility:** Add the CSS file to `utility/bundle.css` (`@import`) and the JS file to the `queue` array in `utility/boot.js`. All pages pick it up automatically — no need to edit any HTML files.
+
+**Ordering note:** `boot.js` guarantees `components.js` runs before `glow-btn.js` (nav CTA must exist before glow-btn init). Never initialise glow buttons in page-specific JS — `glow-btn.js` handles all of them globally using a `.gb-init` guard to prevent double-wrapping.
+
+### Blog posts
+
+Blog posts (`blog/*.html`) load `../utility/bundle.css` (which includes `article.css`) and use `../utility/blog-post.js` for TOC + share logic. **No inline `<style>` or `<script>` is needed** — only post-specific component styles (e.g. `.timeline-block`, `.stat-callout`) may be kept inline:
+
+```html
+<!-- page-specific styles only (optional) -->
+<style>.my-component { ... }</style>
+<link rel="stylesheet" href="../utility/bundle.css">
+...
+<script src="../utility/blog-post.js"></script>
+<script src="../utility/boot.js"></script>
+```
+
+### Supabase (opt-in)
+
+Pages that fetch from Supabase (`index.html`, `work.html`) load `utility/supabase.js` after the Supabase CDN. This exposes `window.RYC.sb` (the shared client), `window.RYC.toSlug()`, and `window.RYC.MOCK` (SVG fallbacks). **Never call `window.supabase.createClient()` directly in page JS** — use `window.RYC.sb`:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="utility/supabase.js"></script>
+<script src="yourpage/yourpage.js"></script>
+<script src="utility/boot.js"></script>
+```
 
 ### Nav CSS scoping note
 

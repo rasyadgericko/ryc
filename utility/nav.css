@@ -80,6 +80,7 @@ nav[role="navigation"] {
 @media (max-width: 1024px) {
   .nav-right { display: none; }
   .nav-mobile-actions { display: flex; }
+  .footer-cols { gap: 3rem; }
 }
 
 /* ===== FOOTER ===== */
